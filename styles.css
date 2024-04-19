@@ -1,0 +1,117 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+main {
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+h1, h2 {
+  color: #333;
+}
+
+.photo-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.photo-container img {
+  width: 500px;
+  height: 400px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+#video {
+  text-align: center;
+}
+
+#video {
+  text-align: center;
+}
+
+/* Style the video player */
+video {
+  width: 100%; /* Make the video fill the container width */
+  max-width: 300px; /* Limit the maximum width of the video */
+  height: auto; /* Maintain aspect ratio */
+  margin: 0 auto; /* Center the video horizontally */
+  display: block; /* Ensure the video is displayed as a block element */
+}
+
+/* Style the video controls */
+video::-webkit-media-controls {
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background for controls */
+}
+
+video::-webkit-media-controls-play-button,
+video::-webkit-media-controls-timeline {
+  color: white; /* White color for play button and timeline */
+}
+
+video::-webkit-media-controls-play-button {
+  font-size: 2em; /* Increase play button size */
+}
+
+/* Style the travel groups */
+.Weekend-group {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+/* Style the group headings */
+.Weekend-group h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+/* Style the items within each group */
+.weekend-item {
+  margin-bottom: 15px;
+}
+
+/* Style the headings for each item */
+.weekend-item h3 {
+  margin-top: 0;
+  color: #555;
+}
+
+/* Add spacing between items */
+.weekend-item:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+/* Adjust margins and padding */
+.Weekend-group:last-child {
+  margin-bottom: 0;
+}
+
+.Weekend-group h2:last-child {
+  margin-bottom: 0;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

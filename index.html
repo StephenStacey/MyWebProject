@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Dog Website</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+  <header>
+    <h1>Meet My Dog</h1>
+  </header>
+  <main>
+    <section id="about">
+      <h2>Meet My Dog</h2>
+      <p>This is a website dedicated to my lovely dog "Mobi". He is a 3-year-old pure"bread" <a href="https://www.akc.org/dog-breeds/havanese/" title="Go to Kennel club" target="_blank">Ham and cheese</a> and is a loyal companion that brings so much joy to my life.</p>
+    </section>
+    <section id="testimonial">
+      <h2>Testimonials</h2>
+      <p>His mammy says...<q><strong><i>He is the best boy!</i></strong></q> and his daddy says...<q><strong><i>He is a little soldier!</strong></i></q></p>
+    </section>
+    <section id="conact">
+      <!-- <h2>Contact Mobi</h2> -->
+      <p><a href="mailto:someone@example.com">Send Mobi an email</a></p>
+    </section>
+    <section id="photos">
+      <h2>Photos</h2>
+      <div class="photo-container">
+        <img src="/images/dog1.jpg" alt="My Dog">
+        <img src="/images/dog2.jpg" alt="My Dog">
+        <img src="/images/dog3.jpg" alt="My Dog">
+      </div>  
+    </section>
+    <section class="Weekend-group">
+    <h2>Weekend away 1</h2>
+    
+    <section class="weekend-item">
+        <h3>Hotel</h3>
+        <!-- Hotel 1 Details -->
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce consectetur convallis massa, a fringilla nunc euismod vitae. Donec dolor lacus, vehicula ut massa at, commodo posuere metus. Aenean viverra ligula vel sollicitudin semper. Vivamus mattis libero ac ante condimentum porta. Phasellus lacus velit, fringilla eu lectus et, tristique egestas ex. Praesent in mollis mi. Nunc nisi felis, maximus ut ligula sed, rutrum lacinia neque.</p>
+    </section>
+    
+    <section class="weekend-item">
+        <h3>Restaurant</h3>
+        <!-- Restaurant 1 Details -->
+        <p>Donec iaculis est urna, id rutrum odio luctus sed. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed scelerisque massa. Nunc mi ex, tincidunt sit amet volutpat sit amet, euismod ac enim. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc sit amet neque faucibus massa venenatis egestas in facilisis lacus. Duis vehicula lacus in dignissim condimentum. Suspendisse fermentum bibendum venenatis.</p>
+    </section>
+    
+    <section class="weekend-item">
+        <h3>Walk</h3>
+        <!-- Walk 1 Details -->
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce consectetur convallis massa, a fringilla nunc euismod vitae. Donec dolor lacus, vehicula ut massa at, commodo posuere metus. Aenean viverra ligula vel sollicitudin semper. Vivamus mattis libero ac ante condimentum porta. Phasellus lacus velit, fringilla eu lectus et, tristique egestas ex. Praesent in mollis mi. Nunc nisi felis, maximus ut ligula sed, rutrum lacinia neque.</p>
+    </section>
+
+     <!-- Add a section for the map -->
+    <section class="weekend-item">
+       <h3>Map</h3>
+       <!-- Map 1 Details -->
+       <div id="map1" style="width: 100%; height: 400px;"></div>
+    </section>
+</section>
+
+<section class="Weekend-group">
+    <h2>Weekend away 2</h2>
+    
+    <section class="weekend-item">
+        <h3>Hotel</h3>
+        <!-- Hotel 2 Details -->
+        <p>Fusce arcu dui, lobortis in nisl id, pulvinar rhoncus metus. Suspendisse efficitur velit ut lacus dignissim, non auctor quam ultrices. Vestibulum maximus pretium mattis. Donec porttitor dolor ac finibus tempor. Nulla sagittis diam leo, eget sagittis sem dapibus vitae. Maecenas ac turpis ac velit aliquet varius tincidunt interdum magna. Vestibulum molestie, ante ac facilisis vehicula, quam quam fringilla libero, luctus congue arcu dolor eget dolor. Vivamus ut dolor pellentesque, interdum ipsum et, mattis magna. Cras maximus eros ultricies, pharetra lorem a, hendrerit tellus. Pellentesque a libero pharetra eros sollicitudin laoreet. Duis tincidunt elit id leo dignissim euismod. Integer elementum ligula purus, at facilisis nulla luctus id. Integer orci velit, vehicula sed auctor eget, feugiat in sem. Sed vel consequat arcu.</p>
+    </section>
+    
+    <section class="weekend-item">
+        <h3>Restaurant</h3>
+        <!-- Restaurant 2 Details -->
+        <p>Nunc vitae sem ut erat suscipit laoreet. Aliquam erat volutpat. Aliquam et sem venenatis, sagittis leo ac, rutrum nisl. Nulla accumsan sem interdum commodo consequat. Praesent eget est eget felis accumsan dapibus. Sed viverra felis id orci sodales varius. Cras eu faucibus ligula. Donec sit amet sem in risus molestie consectetur ut quis quam. Maecenas eget sapien volutpat, porta diam et, malesuada leo. Aenean nibh enim, mollis quis diam nec, feugiat fringilla lectus. Vestibulum facilisis ornare metus nec molestie. Vestibulum id ultricies nisi, non gravida sem. Donec mauris purus, luctus eu augue ut, iaculis finibus odio. Integer gravida leo eu ipsum porta, ut lobortis ante consequat</p>
+    </section>
+    
+    <section class="weekend-item">
+        <h3>Walk</h3>
+        <!-- Walk 2 Details -->
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam imperdiet molestie tincidunt. Maecenas ipsum ex, sollicitudin sed lectus vel, aliquet pellentesque nulla. Nulla pellentesque erat id varius dignissim. Duis feugiat non felis ut ultrices. Suspendisse sagittis ipsum vel augue commodo, sed finibus lorem pellentesque. Donec elementum eget leo sed blandit. Nunc at orci eget leo ultricies volutpat eu sed urna. Etiam finibus arcu vitae elementum convallis. Nulla ut lacus odio. Donec euismod ex in lorem elementum consectetur. Proin ac lectus non felis suscipit euismod vel eget nunc. Nulla leo nibh, pharetra ac fermentum eu, rutrum id turpis. Mauris maximus mauris eu diam porttitor, eget mattis sem commodo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;</p>
+    </section>
+
+     <!-- Add a section for the map -->
+    <section class="weekend-item">
+       <h3>Map</h3>
+       <!-- Map 2 Details -->
+       <div id="map2" style="width: 100%; height: 400px;"></div>
+    </section>
+<!-- Add more travel groups as needed -->  
+</section>
+ 
+   <!-- Include Leaflet JavaScript library -->
+   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+   <!-- Link to the scripts JavaScript file -->
+   <script src="scripts.js"></script>
+  </main>
+  <footer>
+
+  <p>&copy; 2024 Stephen & Lynn`s Website</p>
+  </footer>
+</body>
+</html>
+
