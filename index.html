@@ -8,45 +8,59 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <style>
     body, html {
-        margin: 0;
-        padding: 0;
-        height: 100%;
+      height: 100%;
+      margin: 0;
     }
     
     .bg {
-        /* The image used */
-        background-image: url("Images/dog1.jpg");
+      /* The image used */
+      background-image: url("Images/dog1.jpg");
     
-        /* Full height */
-        height: 100%;
-        
-        /* Cover the width while maintaining aspect ratio */
-        background-size: 100% auto;
-        
-        /* Center the image vertically */
-        background-position: top center;
-        
-        /* Do not repeat the image */
-        background-repeat: no-repeat;
+      /* Full height */
+      height: 50%; 
+    
+      /* Center and scale the image nicely */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
     }
-</style>
-</head>
+       /* Style for paragraphs */
+       p {
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center; /* Center-align the text */
+        }
 
-<body class="bg">
-  <header>
-  <!-- <h1>Home Page</h1> -->
-  </header>
-  
-  <main>
+        /* Style for links */
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Style for links on hover */
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
   <!-- <h1>Welcome to this webite!</h1> -->
-      <div class="topnav" id="myTopnav">
-        <a href="index.html" class="active">Home</a>
-        <a href="about.html">About</a>
-        <a href="mobi.html">Our Dog</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-          <i class="fa fa-bars"></i>
-        </a>
-      </div>  
+  <div class="topnav" id="myTopnav">
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About</a>
+    <a href="mobi.html">Our Dog</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div> 
+  <div class="bg"></div>
+  <main>
+  <p>Welcome to our website!</p>
+  <p>This website is dedicated to weekends away with my wife Lynn and our dog.</p>
+  <p>Please click <a href="about.html">here</a> for more info.</p>   
   </main>
 
   <footer>
