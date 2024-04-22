@@ -8,22 +8,28 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <style>
     body, html {
-      height: 100%;
+        margin: 0;
+        padding: 0;
+        height: 1000%;
     }
     
     .bg {
-      /* The image used */
-      background-image: url("Images/dog1.jpg");
+        /* The image used */
+        background-image: url("Images/dog1.jpg");
     
-      /* Full height */
-      height: 50%;
-    
-      /* Center and scale the image nicely */
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
+        /* Full height */
+        height: 100%;
+        
+        /* Cover the width while maintaining aspect ratio */
+        background-size: 100% auto;
+        
+        /* Center the image vertically */
+        background-position: top center;
+        
+        /* Do not repeat the image */
+        background-repeat: no-repeat;
     }
-  </style>
+</style>
 </head>
 
 <body class="bg">
