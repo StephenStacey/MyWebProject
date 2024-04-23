@@ -87,6 +87,7 @@ h1, h2 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  margin: 30px;
 }
 
 .photo-container img {
