@@ -34,5 +34,31 @@ function toggleResponsiveNav() {
     x.className = "topnav";
   }
 }
+/* Weather API*/
+document.addEventListener("DOMContentLoaded", function () {
+  const apiKey = "4YCIyPkczORtahmyKhf2zwsnmy6Irl3g"; // Get your API key from AccuWeather
+  const cityKey = "207931"; // Get your city key from AccuWeather
+  const apiUrl = `https://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${apiKey}&details=true`;
+
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      const weatherInfo = document.querySelector('.weather-info');
+      const weather = data[0];
+      weatherInfo.innerHTML = `
+        <h2>${weather.LocalObservationDateTime}</h2>
+        <p>${weather.WeatherText}</p>
+        <p>Temperature: ${weather.Temperature.Metric.Value}°${weather.Temperature.Metric.Unit}</p>
+        <p>Relative Humidity: ${weather.RelativeHumidity}%</p>
+        <p>Wind Speed: ${weather.Wind.Speed.Metric.Value} ${weather.Wind.Speed.Metric.Unit}</p>
+      `;
+    })
+    .catch(error => {
+      console.error('Error fetching weather data:', error);
+      const weatherInfo = document.querySelector('.weather-info');
+      weatherInfo.innerHTML = '<p>Unable to fetch weather data. Please try again later.</p>';
+    });
+});
+
 
 

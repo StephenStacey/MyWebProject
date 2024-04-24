@@ -167,6 +167,19 @@ video::-webkit-media-controls-play-button {
   margin-bottom: 0;
 }
 
+.weather-container {
+  max-width: 600px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.weather-info {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 footer {
   background-color: #333;
   color: #fff;
