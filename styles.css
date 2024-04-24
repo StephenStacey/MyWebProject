@@ -167,7 +167,7 @@ video::-webkit-media-controls-play-button {
   margin-bottom: 0;
 }
 
-.weather-container {
+.container {
   max-width: 600px;
   margin: 50px auto;
   text-align: center;

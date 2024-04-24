@@ -34,13 +34,13 @@ function toggleResponsiveNav() {
     x.className = "topnav";
   }
 }
-/* Weather API*/
+/* Weather API */
 document.addEventListener("DOMContentLoaded", function () {
   const apiKey = "4YCIyPkczORtahmyKhf2zwsnmy6Irl3g"; // Get your API key from AccuWeather
   const cityKey = "207931"; // Get your city key from AccuWeather
   const apiUrl = `https://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${apiKey}&details=true`;
-
-  fetch(apiUrl)
+ 
+    fetch(apiUrl)
     .then(response => response.json())
     .then(data => {
       const weatherInfo = document.querySelector('.weather-info');
