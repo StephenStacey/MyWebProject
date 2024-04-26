@@ -11,15 +11,22 @@ function toggleResponsiveNav() {
 }
 
 
-/* Weather API Geo coords [53.344, -6.2672] */
-/* Geo coords [53.344, -6.2672] */
+/* Weather API */
 document.addEventListener("DOMContentLoaded", function () {
+  // OpenWeatherMap API key
   const weatherApiKey = "6cac2bc083844ca2d59a732d59a9de2c"; // Your OpenWeatherMap API key
 
-  // Weather API URL to get weather data directly using city name
-  const weatherApiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=53.34&lon=-6.26&appid=${weatherApiKey}`;
+  // Latitude and longitude coordinates (Dublin, Ireland)
+  const lat = 53.349805;
+  const lon = -6.26031;
+  
+  // Weather API URL using latitude and longitude
+  const weatherApiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude={part}&appid=${weatherApiKey}`;
+
+  // Select the element where weather information will be displayed
   const weatherInfoElement = document.querySelector('.weather-info');
 
+  // Fetch weather data from the API
   fetch(weatherApiUrl)
     .then(response => {
       if (!response.ok) {
@@ -30,16 +37,31 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(data => {
       // Handle the weather data
       console.log(data); // Example: Log the data to console
-      
-      // Update the weather-info div with the retrieved weather data
-      const weatherDescription = data.current.weather[0].description;
-      const temperature = data.current.temp;
-      weatherInfoElement.innerHTML = `<p>Weather: ${weatherDescription}</p><p>Temperature: ${temperature}°C</p>`;
-    })
-    .catch(error => {
-      console.error('Error fetching weather data:', error);
-    });
+
+  // Extract temperature in Kelvin and convert to Celsius
+  const temperatureKelvin = data.current.temp;
+  const temperatureCelsius = temperatureKelvin - 273.15;
+
+  // Extract other weather information
+  const weatherDescription = data.current.weather[0].description;
+  const humidity = data.current.humidity;
+  const windSpeed = data.current.wind_speed;
+  const pressure = data.current.pressure;
+  
+  // Update the weather-info div with the retrieved weather data
+  weatherInfoElement.innerHTML = `
+    <p>Weather: ${weatherDescription}</p>
+    <p>Temperature: ${temperatureCelsius.toFixed(2)}°C</p>
+    <p>Humidity: ${humidity}%</p>
+    <p>Wind Speed: ${windSpeed} m/s</p>
+    <p>Pressure: ${pressure} hPa</p>
+  `;
+})
+.catch(error => {
+  console.error('Error fetching weather data:', error);
 });
+});
+
 
 
 // Initialize map 1
