@@ -40,23 +40,25 @@
     </nav>
 
     <!--Weather card-->
-      <div class="container mt-4">
-        <div class="row justify-content-center">
-          <div class="col-md-6">
-            <div class="card bg-light">
-              <div class="card-body">
-                <h5 class="card-title">Weather Information - Dublin</h5>
-                <p class="card-text">Weather: Sunny</p>
-                <p class="card-text">Temperature: 25°C</p>
-                <p class="card-text">Humidity: 70%</p>
-                <p class="card-text">Wind Speed: 10 m/s</p>
-                <p class="card-text">Pressure: 1013 hPa</p>
-              </div>
+    <div class="container mt-4">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card bg-light">
+            <div class="card-body weather-info">
+              <h5 class="card-title">Weather Information - Dublin</h5>
+              <p class="card-text">Weather: <span id="weatherCondition"></span></p>
+              <p class="card-text">Temperature: <span id="temperature"></span></p>
+              <p class="card-text">Humidity: <span id="humidity"></span></p>
+              <p class="card-text">Wind Speed: <span id="windSpeed"></span></p>
+              <p class="card-text">Pressure: <span id="pressure"></span></p>
             </div>
           </div>
         </div>
       </div>
-  
+    </div>
+    
+      
+
       <!-- Footer -->
   <footer class="footer mt-3 py-3 bg-dark text-white text-center">
     <div class="container">
