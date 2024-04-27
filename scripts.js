@@ -53,12 +53,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
           // Update the weather-info div with the retrieved weather data
           weatherInfoElement.innerHTML = `
-              <p>Weather: ${weatherDescription}</p>
-              <p>Temperature: ${temperatureCelsius.toFixed(2)}°C</p>
-              <p>Humidity: ${humidity}%</p>
-              <p>Wind Speed: ${windSpeed} m/s</p>
-              <p>Pressure: ${pressure} hPa</p>
-          `;
+          <div class="card-header">
+          <h5 class="card-title">Weather Information - Dublin</h5>
+          </div>
+          <div class="card-body">
+          <p>Weather: ${weatherDescription}</p>
+          <p>Temperature: ${temperatureCelsius.toFixed(2)}°C</p>
+          <p>Humidity: ${humidity}%</p>
+          <p>Wind Speed: ${windSpeed} m/s</p>
+          <p>Pressure: ${pressure} hPa</p>
+          </div>
+  `;
       })
       .catch(error => {
           console.error('Error fetching weather data:', error);
