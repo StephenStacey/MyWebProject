@@ -147,7 +147,7 @@ var map1 = L.map('map1').setView([54.877826, -6.348212], 8);
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map1);
     L.marker([54.877826, -6.348212]).addTo(map1)
-      .bindPopup('This is Weekend away 1.')
+      .bindPopup('This is Galgorm Luxery Resort & Spa.')
       .openPopup();
 
 
@@ -158,7 +158,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map2);
 L.marker([51.911408, -8.063414]).addTo(map2)
-  .bindPopup('This is Weekend away 2.')
+  .bindPopup('This is Castlemartyr Resort.')
   .openPopup(); 
 
 var map = L.map('map3').setView([51.911408, -8.063414], 8); // Example: Castelemartyr Resort, Ireland
