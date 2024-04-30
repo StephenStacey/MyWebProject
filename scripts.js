@@ -142,27 +142,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // Initialize map 1
-var map1 = L.map('map1').setView([54.877826, -6.348212], 8);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map1);
-    L.marker([54.877826, -6.348212]).addTo(map1)
-      .bindPopup('This is Galgorm Luxury Resort & Spa.')
-      .openPopup();
+var map1 = L.map('map1').setView([54.877826, -6.348212], 8); // Example: Galgorm Luxury Resort & Spa, Ballymena, Northern Ireland
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map1);
+L.marker([54.877826, -6.348212]).addTo(map1)
+  .bindPopup('This is Galgorm Luxury Resort & Spa.')
+  .openPopup();
 
-
-
- // Initialize map 2
-var map2 = L.map('map2').setView([51.911408, -8.063414], 8);
+// Initialize map 2
+var map2 = L.map('map2').setView([51.911408, -8.063414], 9); // Example: Castlemartyr, Co. Cork
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map2);
 L.marker([51.911408, -8.063414]).addTo(map2)
   .bindPopup('This is Castlemartyr Resort.')
-  .openPopup(); 
+  .openPopup();
 
-var map = L.map('map3').setView([51.911408, -8.063414], 8); // Example: Castelemartyr Resort, Ireland
-
+// Initialize map 3
+var map3 = L.map('map3').setView([52.09474497306979, -7.6234525899288], 9); // Example: The Park Hotel, Dungarvan, Co. Waterford
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map); 
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map3);
+L.marker([52.09474497306979, -7.6234525899288]).addTo(map3)
+  .bindPopup('This is The Park Hotel.')
+  .openPopup();
