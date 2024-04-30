@@ -147,7 +147,7 @@ var map1 = L.map('map1').setView([54.877826, -6.348212], 8);
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map1);
     L.marker([54.877826, -6.348212]).addTo(map1)
-      .bindPopup('This is Galgorm Luxery Resort & Spa.')
+      .bindPopup('This is Galgorm Luxury Resort & Spa.')
       .openPopup();
 
 
