@@ -1,6 +1,10 @@
-/* Place your JavaScript in this file */
+/* 
+  Place your JavaScript in this file 
+*/
 
-/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+/* 
+  Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon 
+*/
 function toggleResponsiveNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -10,8 +14,9 @@ function toggleResponsiveNav() {
   }
 }
 
-
-/* Current Weather API */
+/* 
+  Current Weather API 
+*/
 document.addEventListener("DOMContentLoaded", function () {
   // OpenWeatherMap API key
   const weatherApiKey = "6cac2bc083844ca2d59a732d59a9de2c"; // Your OpenWeatherMap API key
@@ -72,9 +77,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 /* 
-  Forecast Weather API
+  Forecast Weather API 
 */
-
 document.addEventListener("DOMContentLoaded", function () {
   // OpenWeatherMap API key
   const weatherApiKey = "6cac2bc083844ca2d59a732d59a9de2c"; // Your OpenWeatherMap API key
@@ -161,9 +165,20 @@ L.marker([51.911408, -8.063414]).addTo(map2)
 
 // Initialize map 3
 var map3 = L.map('map3').setView([52.09474497306979, -7.6234525899288], 9); // Example: The Park Hotel, Dungarvan, Co. Waterford
+
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map3);
+
 L.marker([52.09474497306979, -7.6234525899288]).addTo(map3)
   .bindPopup('This is The Park Hotel.')
   .openPopup();
+
+L.marker([52.09941317016307, -7.537921800491051]).addTo(map3)
+  .bindPopup('This is parking A.');
+
+L.marker([52.09460654297441, -7.545316551539263]).addTo(map3)
+  .bindPopup('This is parking B.');
+
+L.marker([52.08798858933513, -7.549093981901171]).addTo(map3)
+  .bindPopup('This is parking C.');

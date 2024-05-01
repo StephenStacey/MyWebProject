@@ -56,7 +56,9 @@
   <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">
+          <img src="https://cdn-icons-png.flaticon.com/512/12/12638.png" alt="Navbar Brand Icon" width="30" height="30">
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -91,7 +93,7 @@
       <div class="card-body">
         <h2 class="card-title">Meet Our Dog</h2>
         <p class="card-text">My name is "Mobi" and I am a 3-year-old purebred Havanese aka "pure bread ham & cheese".  An interesting fact about me is that 60% of the time, I am 20% a good boy!</p>
-        <a href="https://www.akc.org/dog-breeds/havanese/" class="btn btn-primary" target="_blank">Learn More About My Bred</a>
+        
       </div>
     </div>
 
@@ -110,15 +112,23 @@
       </div>
 
       <!-- Carousel Control Buttons -->
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselMobi" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselMobi" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+      <div class="carousel-buttons-container pb-3">
+        <!-- Carousel Control Buttons -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselMobi" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselMobi" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>      
+
+    <!-- Learn about my breed -->
+    <div class="d-flex justify-content-center">
+      <a href="https://www.akc.org/dog-breeds/havanese/" class="btn btn-secondary" target="_blank">Learn More About My Breed</a>
     </div>
+    
   </main>
 
   <!-- Footer -->
