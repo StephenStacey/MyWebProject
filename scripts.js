@@ -25,8 +25,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const lat = 53.349805;
   const lon = -6.26031;
 
-   // Weather API URL using latitude and longitude
-  const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherApiKey}`;
+  // Generate a unique cache-busting parameter
+  const cacheBuster = new Date().getTime(); // Current timestamp
+
+  // Weather API URL using latitude and longitude
+  const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherApiKey}&cb=${cacheBuster}`;
 
   // Select the element where weather information will be displayed
   const weatherInfoElement = document.querySelector('.weather-info');
@@ -73,6 +76,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
+
 /* 
   Forecast Weather API 
 */
@@ -92,31 +97,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Fetch weather forecast data from the API
   fetch(weatherApiUrl)
-      .then(response => {
-          if (!response.ok) {
-              throw new Error('Network response was not ok');
-          }
-          return response.json();
-      })
-      .then(data => {
-          // Handle the weather forecast data
-          console.log(data); // Example: Log the data to console
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Handle the weather forecast data
+      console.log(data); // Example: Log the data to console
 
-          // Extract and display forecast data for each day (5 days)
-          for (let i = 0; i < 5; i++) {
-              const forecast = data.list[i * 8]; // Get forecast for every 8th entry (3-hour interval * 8 = 24 hours/day)
-              const date = new Date(forecast.dt * 1000); // Convert timestamp to date object
-              const temperatureKelvin = forecast.main.temp;
-              const temperatureCelsius = temperatureKelvin - 273.15;
-              const weatherDescription = forecast.weather[0].description;
-              const humidity = forecast.main.humidity;
-              const windSpeed = forecast.wind.speed;
-              const pressure = forecast.main.pressure;
+      // Extract and display forecast data for each day (5 days)
+      for (let i = 0; i < 5; i++) {
+        const forecast = data.list[i * 8]; // Get forecast for every 8th entry (3-hour interval * 8 = 24 hours/day)
+        const date = new Date(forecast.dt * 1000); // Convert timestamp to date object
+        const temperatureKelvin = forecast.main.temp;
+        const temperatureCelsius = temperatureKelvin - 273.15;
+        const weatherDescription = forecast.weather[0].description;
+        const humidity = forecast.main.humidity;
+        const windSpeed = forecast.wind.speed;
+        const pressure = forecast.main.pressure;
 
-              // Create a new card for each forecast day
-              const card = document.createElement('div');
-              card.classList.add('card');
-              card.innerHTML = `
+        // Create a new card for each forecast day
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.innerHTML = `
                   <div class="card-header">
                       <h5 class="card-title">Weather Forecast - Dublin - ${date.toDateString()}</h5>
                   </div>
@@ -128,13 +133,13 @@ document.addEventListener("DOMContentLoaded", function () {
                       <p>Pressure: ${pressure} hPa</p>
                   </div>
               `;
-              // Append the card to the weather-info element
-              weatherInfoElement.appendChild(card);
-          }
-      })
-      .catch(error => {
-          console.error('Error fetching weather forecast data:', error);
-      });
+        // Append the card to the weather-info element
+        weatherInfoElement.appendChild(card);
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching weather forecast data:', error);
+    });
 });
 
 
