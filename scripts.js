@@ -25,11 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const lat = 53.349805;
   const lon = -6.26031;
 
-  // Generate a unique cache-busting parameter
-  const cacheBuster = new Date().getTime(); // Current timestamp
-
-  // Weather API URL using latitude and longitude
-  const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherApiKey}&cb=${cacheBuster}`;
+   // Weather API URL using latitude and longitude
+  const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherApiKey}`;
 
   // Select the element where weather information will be displayed
   const weatherInfoElement = document.querySelector('.weather-info');
@@ -87,11 +84,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const lat = 53.349805;
   const lon = -6.26031;
 
-  // Generate a unique cache-busting parameter
-  const cacheBuster = new Date().getTime(); // Current timestamp
-
   // Weather API URL using latitude and longitude, and requesting forecast data
-  const weatherApiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${weatherApiKey}&cb=${cacheBuster}`;
+  const weatherApiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${weatherApiKey}`;
 
   // Select the element where weather information will be displayed
   const weatherInfoElement = document.querySelector('.forecast-weather-info');
