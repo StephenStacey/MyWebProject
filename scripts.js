@@ -143,7 +143,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
 // Initialize map 1
 var map1 = L.map('map1').setView([54.877826, -6.348212], 8); // Example: Galgorm Luxury Resort & Spa, Ballymena, Northern Ireland
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -152,6 +151,40 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 L.marker([54.877826, -6.348212]).addTo(map1)
   .bindPopup('This is Galgorm Luxury Resort & Spa.')
   .openPopup();
+L.marker([55.17070, -6.72752]).addTo(map1)
+.bindPopup('This is Harry`s Shack.')
+L.marker([55.1710160929136, -6.731610778284048]).addTo(map1)
+.bindPopup('Parking for Port Stewart beach')
+L.marker([55.16791, -6.87563]).addTo(map1)
+.bindPopup('Parking for Benone beach')
+
+// Add polyline - Port Stewart beach
+var latlngs = [
+  [55.172211112373844, -6.726923090146396], // Starting point
+  [55.16932389557984, -6.745177505837924], // Next point
+  [55.16768160916797, -6.768523453366122], // Next point
+    // Add more points as needed
+];
+var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map1);  
+// Add a popup label to the polyline
+polyline.bindPopup("This is the beach walk")
+
+// Add polyline - Benone beach
+var latlngs = [
+  [55.19458805432642, -6.956784668828034], // Starting point
+  [55.18899505623539, -6.9467258214821035], // Next point
+  [55.17855892696065, -6.925351901841416], // Next point
+  [55.17304822811428, -6.908479675255773], // Next point
+  [55.170448577289754, -6.892760586854266], // Next point
+  [55.167952753106874, -6.875827668806084], // Next point
+  [55.166485425241284, -6.851094722070124], // Next point
+  [55.16704509562195, -6.835042667443787], // Next point
+  [55.16801573457866, -6.813679272630311], // Next point
+    // Add more points as needed
+];
+var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map1);  
+// Add a popup label to the polyline
+polyline.bindPopup("This is the beach walk")
 
 // Initialize map 2
 var map2 = L.map('map2').setView([51.911408, -8.063414], 9); // Example: Castlemartyr, Co. Cork
@@ -162,6 +195,7 @@ L.marker([51.911408, -8.063414]).addTo(map2)
   .bindPopup('This is Castlemartyr Resort.')
   .openPopup();
 
+  
 // Initialize map 3
 var map3 = L.map('map3').setView([52.09474497306979, -7.6234525899288], 9); // Example: The Park Hotel, Dungarvan, Co. Waterford
 
