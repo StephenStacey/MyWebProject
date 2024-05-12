@@ -157,20 +157,24 @@ L.marker([55.1710160929136, -6.731610778284048]).addTo(map1)
 .bindPopup('Parking for Port Stewart beach')
 L.marker([55.16791, -6.87563]).addTo(map1)
 .bindPopup('Parking for Benone beach')
+L.marker([55.16634339422888, -6.820533496809242]).addTo(map1)
+.bindPopup('Very small parking for Benone beach')
+L.marker([55.1662169985367, -6.820683700515766]).addTo(map1)
+.bindPopup('Public toilets')
 
 // Add polyline - Port Stewart beach
-var latlngs = [
+var latlngs1 = [
   [55.172211112373844, -6.726923090146396], // Starting point
   [55.16932389557984, -6.745177505837924], // Next point
   [55.16768160916797, -6.768523453366122], // Next point
     // Add more points as needed
 ];
-var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map1);  
+var polyline1 = L.polyline(latlngs1, {color: 'red'}).addTo(map1);  
 // Add a popup label to the polyline
-polyline.bindPopup("This is the beach walk")
+polyline1.bindPopup("This is the beach walk")
 
 // Add polyline - Benone beach
-var latlngs = [
+var latlngs2 = [
   [55.19458805432642, -6.956784668828034], // Starting point
   [55.18899505623539, -6.9467258214821035], // Next point
   [55.17855892696065, -6.925351901841416], // Next point
@@ -178,14 +182,14 @@ var latlngs = [
   [55.170448577289754, -6.892760586854266], // Next point
   [55.167952753106874, -6.875827668806084], // Next point
   [55.166485425241284, -6.851094722070124], // Next point
-
   [55.1668370984854, -6.834557135743481], // Next point
   [55.16801573457866, -6.813679272630311], // Next point
     // Add more points as needed
 ];
-var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map1);  
+var polyline2 = L.polyline(latlngs2, {color: 'red'}).addTo(map1);  
 // Add a popup label to the polyline
-polyline.bindPopup("This is the beach walk")
+polyline2.bindPopup("This is the beach walk")
+
 
 // Initialize map 2
 var map2 = L.map('map2').setView([51.911408, -8.063414], 9); // Example: Castlemartyr, Co. Cork
@@ -216,3 +220,12 @@ L.marker([52.09460654297441, -7.545316551539263]).addTo(map3)
 
 L.marker([52.08798858933513, -7.549093981901171]).addTo(map3)
   .bindPopup('This is parking C.');
+
+
+// Add GPX file
+var gpx1 = 'GPX_files/Galgorm_river_walk-1'; // Path to your GPX file
+new L.GPX(gpx1, {
+    async: true,
+}).on('loaded', function(e) {
+    map1.fitBounds(e.target.getBounds());
+}).addTo(map1);  
