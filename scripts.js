@@ -191,15 +191,6 @@ var polyline2 = L.polyline(latlngs2, {color: 'red'}).addTo(map1);
 // Add a popup label to the polyline
 polyline2.bindPopup("This is the beach walk")
 
-/*
-// Add GPX file
-var gpx1 ="GPX_files/Galgorm_river_walk-1.gpx"; // Path to your GPX file
-new L.GPX(gpx1, {
-    async: true,
-}).on('loaded', function(e) {
-    map1.fitBounds(e.target.getBounds());
-}).addTo(map1);
-*/
 
 // Add satellite tile layer
 var satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
@@ -311,7 +302,7 @@ new L.GPX(
 
 /*
 // Add GPX file
-var gpx1 ="GPX_files/Galgorm_river_walk-1.gpx"; // Path to your GPX file
+var gpx1 ="GPX_files\Galgorm_river_walk_1.gpx"; // Path to your GPX file
 new L.GPX(gpx1, {
     async: true,
 }).on('loaded', function(e) {
