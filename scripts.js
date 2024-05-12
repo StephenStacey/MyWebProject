@@ -148,8 +148,9 @@ var map1 = L.map('map1').setView([54.877826, -6.348212], 8); // Example: Galgorm
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map1);
+
 L.marker([54.877826, -6.348212]).addTo(map1)
-  .bindPopup('This is Galgorm Luxury Resort & Spa.')
+  .bindPopup('Hotel')
   .openPopup();
 L.marker([55.17070, -6.72752]).addTo(map1)
 .bindPopup('This is Harry`s Shack.')
@@ -190,6 +191,16 @@ var polyline2 = L.polyline(latlngs2, {color: 'red'}).addTo(map1);
 // Add a popup label to the polyline
 polyline2.bindPopup("This is the beach walk")
 
+/*
+// Add GPX file
+var gpx1 ="GPX_files/Galgorm_river_walk-1.gpx"; // Path to your GPX file
+new L.GPX(gpx1, {
+    async: true,
+}).on('loaded', function(e) {
+    map1.fitBounds(e.target.getBounds());
+}).addTo(map1);
+*/
+
 // Add satellite tile layer
 var satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
     attribution: '&copy; Esri'
@@ -216,7 +227,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map2);
 L.marker([51.911408, -8.063414]).addTo(map2)
-  .bindPopup('This is Castlemartyr Resort.')
+  .bindPopup('Hotel')
   .openPopup();
 
 // Add satellite tile layer
@@ -247,7 +258,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map3);
 
 L.marker([52.09474497306979, -7.6234525899288]).addTo(map3)
-  .bindPopup('This is The Park Hotel.')
+  .bindPopup('Hotel.')
   .openPopup();
 
 L.marker([52.09941317016307, -7.537921800491051]).addTo(map3)
@@ -278,7 +289,25 @@ var baseLayers = {
 // Add a layer control to the map
 L.control.layers(baseLayers).addTo(map3);
 
+const map = L.map('map');
 
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+new L.GPX(
+  'https://assets.codepen.io/2511086/Mendick+Hill-compressed.gpx',
+  {
+    async: true,
+    marker_options: {
+      startIconUrl: 'https://cdn.jsdelivr.net/npm/leaflet-gpx@1.7.0/pin-icon-start.png',
+      endIconUrl: 'https://cdn.jsdelivr.net/npm/leaflet-gpx@1.7.0/pin-icon-end.png',
+      shadowUrl: 'https://cdn.jsdelivr.net/npm/leaflet-gpx@1.7.0/pin-shadow.png'
+    }
+  }
+).on('loaded', function(e) {
+  map.fitBounds(e.target.getBounds());
+}).addTo(map);
 
 /*
 // Add GPX file
