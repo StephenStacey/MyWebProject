@@ -223,7 +223,7 @@ L.marker([52.08798858933513, -7.549093981901171]).addTo(map3)
 
 
 // Add GPX file
-var gpx1 = 'GPX_files/Galgorm_river_walk-1'; // Path to your GPX file
+var gpx1 = "GPX_files/Galgorm_river_walk-1.gpx"; // Path to your GPX file
 new L.GPX(gpx1, {
     async: true,
 }).on('loaded', function(e) {
