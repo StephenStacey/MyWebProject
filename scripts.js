@@ -190,6 +190,25 @@ var polyline2 = L.polyline(latlngs2, {color: 'red'}).addTo(map1);
 // Add a popup label to the polyline
 polyline2.bindPopup("This is the beach walk")
 
+// Add satellite tile layer
+var satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: '&copy; Esri'
+}).addTo(map1);
+
+// Add street tile layer as the default layer
+var streetLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map1);
+
+// Create a base layers object for easy toggling
+var baseLayers = {
+  "Satellite": satelliteLayer,
+  "Streets": streetLayer
+};
+
+// Add a layer control to the map
+L.control.layers(baseLayers).addTo(map1);
+
 
 // Initialize map 2
 var map2 = L.map('map2').setView([51.911408, -8.063414], 9); // Example: Castlemartyr, Co. Cork
@@ -199,6 +218,25 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 L.marker([51.911408, -8.063414]).addTo(map2)
   .bindPopup('This is Castlemartyr Resort.')
   .openPopup();
+
+// Add satellite tile layer
+var satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: '&copy; Esri'
+}).addTo(map2);
+
+// Add street tile layer as the default layer
+var streetLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map2);
+
+// Create a base layers object for easy toggling
+var baseLayers = {
+  "Satellite": satelliteLayer,
+  "Streets": streetLayer
+};
+
+// Add a layer control to the map
+L.control.layers(baseLayers).addTo(map2);
 
   
 // Initialize map 3
@@ -221,11 +259,33 @@ L.marker([52.09460654297441, -7.545316551539263]).addTo(map3)
 L.marker([52.08798858933513, -7.549093981901171]).addTo(map3)
   .bindPopup('This is parking C.');
 
+// Add satellite tile layer
+var satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: '&copy; Esri'
+}).addTo(map3);
 
+// Add street tile layer as the default layer
+var streetLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map3);
+
+// Create a base layers object for easy toggling
+var baseLayers = {
+  "Satellite": satelliteLayer,
+  "Streets": streetLayer
+};
+
+// Add a layer control to the map
+L.control.layers(baseLayers).addTo(map3);
+
+
+
+/*
 // Add GPX file
-var gpx1 = "GPX_files/Galgorm_river_walk-1.gpx"; // Path to your GPX file
+var gpx1 ="GPX_files/Galgorm_river_walk-1.gpx"; // Path to your GPX file
 new L.GPX(gpx1, {
     async: true,
 }).on('loaded', function(e) {
     map1.fitBounds(e.target.getBounds());
-}).addTo(map1);  
+}).addTo(map1);
+*/
