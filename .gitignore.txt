@@ -1,1 +1,3 @@
+about.html
+mobi.html
 weather.html

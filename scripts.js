@@ -14,8 +14,13 @@ function toggleResponsiveNav() {
   }
 }
 
-// Initialize map 1
-var map1 = L.map('map1').setView([53.3331, -6.2489], 6); // Centered on Ireland with a zoom level that shows the whole country
+// Initialize map with fractional zoom
+var map1 = L.map('map1', {
+  center: [53.5, -8.0],
+  zoom: 6.5, // Set the zoom level to a decimal value
+  zoomSnap: 0.3, // Allow zooming in smaller increments
+  zoomDelta: 0.3 // Allow zooming in smaller steps when using controls
+});
 
 // Add tile layer
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -25,7 +30,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 //Galgorm Luxury Resort & Spa, Ballymena, Northern Ireland
 L.marker([54.877826, -6.348212]).addTo(map1)
   .bindPopup('Galgorm Luxury Resort & Spa, Ballymena, Northern Ireland')
-  .openPopup();
+  ;
 L.marker([55.17070, -6.72752]).addTo(map1)
   .bindPopup('This is Harry`s Shack.')
 L.marker([55.1710160929136, -6.731610778284048]).addTo(map1)
@@ -68,12 +73,12 @@ polyline2.bindPopup("This is the beach walk")
 //Castlemartyr, Co. Cork
 L.marker([51.911408, -8.063414]).addTo(map1)
   .bindPopup('Castlemartyr Resort, Co. Cork')
-  .openPopup();
+  ;
 
 //The Park Hotel, Dungarvan, Co. Waterford.
 L.marker([52.09474497306979, -7.6234525899288]).addTo(map1)
   .bindPopup('The Park Hotel, Dungarvan, Co. Waterford.')
-  .openPopup();
+  ;
 
 L.marker([52.09941317016307, -7.537921800491051]).addTo(map1)
   .bindPopup('This is parking A.');
