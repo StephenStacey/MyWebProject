@@ -1,44 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <!-- Meta tags -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Getaways With Our Dog</title>
+
+  <!-- Leaflet CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.min.css" rel="stylesheet">
+
+  <!-- Leaflet JavaScript -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <!-- Leaflet GPX Plugin -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.4.0/gpx.min.js"></script>
+
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
   <!-- Custom CSS styles -->
   <style>
     .jumbotron {
-      background-color: #f8f9fa; /* Light grey background */
-      color: #343a40; /* Dark grey text */
-      padding: 3rem; /* Add some padding around the content */
-      border-radius: 15px; /* Add rounded corners */
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+      background-color: #f8f9fa;
+      /* Light grey background */
+      color: #343a40;
+      /* Dark grey text */
+      padding: 3rem;
+      /* Add some padding around the content */
+      border-radius: 15px;
+      /* Add rounded corners */
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      /* Add a subtle shadow */
     }
 
     .jumbotron h1 {
-      font-size: 3.rem; /* Increase the font size of the heading */
-      font-weight: bold; /* Make the heading bold */
-      margin-bottom: 1.5rem; /* Add some space below the heading */
+      font-size: 3.rem;
+      /* Increase the font size of the heading */
+      font-weight: bold;
+      /* Make the heading bold */
+      margin-bottom: 1.5rem;
+      /* Add some space below the heading */
     }
 
     .jumbotron p {
-      font-size: 1.2rem; /* Increase the font size of the paragraph */
+      font-size: 1.2rem;
+      /* Increase the font size of the paragraph */
     }
 
     /* CSS for sticky footer */
     .container-flex {
       display: flex;
       flex-direction: column;
-      min-height: 100vh; /* Ensure the container takes up at least the full height of the viewport */
+      min-height: 100vh;
+      /* Ensure the container takes up at least the full height of the viewport */
     }
 
     .main-content {
-      flex-grow: 1; /* Allow the main content to grow and take up remaining space */
+      flex-grow: 1;
+      /* Allow the main content to grow and take up remaining space */
+    }
+
+    /* Center the images within the carousel */
+    #carouselMobi .carousel-inner img {
+      margin: auto;
+    }
+
+    /* Highlight the carousel control buttons */
+    .carousel-control-prev,
+    .carousel-control-next {
+      background-color: rgba(0, 0, 0, 0.5);
+      /* Adjust opacity and color as needed */
+      border-radius: 50%;
+      /* Makes the buttons circular */
+    }
+
+    /* Change color of the carousel control icons */
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      filter: invert(1);
+      /* Inverts the color of the icons */
+    }
+
+    /* Optional: Adjust the size of the carousel control buttons */
+    .carousel-control-prev,
+    .carousel-control-next {
+      width: 40px;
+      /* Adjust as needed */
+      height: 40px;
+      /* Adjust as needed */
+    }
+
+    /* CSS for sticky footer */
+    .container-flex {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      /* Ensure the container takes up at least the full height of the viewport */
+    }
+
+    .main-content {
+      flex-grow: 1;
+      /* Allow the main content to grow and take up remaining space */
     }
   </style>
 </head>
+
 <body>
 
   <!-- Navigation Bar -->
@@ -49,7 +119,8 @@
           <img src="https://cdn-icons-png.flaticon.com/512/12/12638.png" alt="Navbar Brand Icon" width="30" height="30">
         </a>
         <!-- Navbar Toggler for Mobile -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Navbar Links -->
@@ -59,10 +130,7 @@
               <a class="nav-link active" aria-current="page" href="index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="about.html">Getaways</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="mobi.html">Our Dog</a>
+              <a class="nav-link active" aria-current="page" href="map.html">Map</a>
             </li>
           </ul>
           <!-- Search Form -->
@@ -81,7 +149,8 @@
   <main>
     <div class="jumbotron text-center mb-4">
       <h1 class="display-4">Getaways With Our Dog!</h1>
-    </div>     
+    </div>
+    </div>
 
     <!-- Full-width Image of Mobi-->
     <div class="container pb-4">
@@ -92,23 +161,248 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Please click here button --> 
-    <div class="text-center pb-3">
-      <a href="about.html" class="btn btn-primary">More Info</a>
-    </div>   
+      <!-- Introduction -->
+      <div class="container mt-5">
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          <h4 class="alert-heading">Welcome to Getaways With Our Dog!</h4>
+          <p class="mb-0">Each weekend will typically contain a dog-friendly hotel, a good restaurant, and a great walk
+            for your dog. Make the most of your time off with your furry friend!</p>
+        </div>
+      </div>
 
-  </main> 
+      <!-- Meet Mobi Section -->
+      <!-- Card Section -->
+      <div class="card border-0">
+        <div class="card-body">
+          <h2 class="card-title">Meet Our Dog</h2>
+          <p class="card-text">My name is "Mobi" and I am a 3-year-old purebred Havanese aka "pure bread ham & cheese".
+            An interesting fact about me is that 60% of the time, I am 20% a good boy!</p>
+
+        </div>
+      </div>
+
+      <!-- Carousel Section -->
+      <div id="carouselMobi" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="Images/Dog looking at camera 2.jpg" class="d-block w-50 mx-auto" alt="dog">
+          </div>
+          <div class="carousel-item">
+            <img src="Images/Dog in basket.jpg" class="d-block w-50 mx-auto" alt="dog">
+          </div>
+          <div class="carousel-item">
+            <img src="Images/Dog looking at camera 3.jpg" class="d-block w-50 mx-auto" alt="dog">
+          </div>
+        </div>
+
+        <!-- Carousel Control Buttons -->
+        <div class="carousel-buttons-container pb-3">
+          <!-- Carousel Control Buttons -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselMobi" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselMobi" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+        <!-- Learn about my breed -->
+        <div class="d-flex justify-content-center">
+          <a href="https://www.akc.org/dog-breeds/havanese/" class="btn btn-secondary" target="_blank">Learn More About
+            My Breed</a>
+        </div>
+
+
+        <div class="container my-5">
+          <h1 class="text-center mb-4">Getaways By Province</h1>
+
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Ulster</th>
+                  <th scope="col">Connacht</th>
+                  <th scope="col">Leinster</th>
+                  <th scope="col">Munster</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <ul class="list-unstyled">
+                      <li><a href="#ulster">Ulster</a></li>
+                    </ul>
+                  </td>
+                  <td>
+                    <ul class="list-unstyled">
+                      <li><a href="#connacht">Connacht</a></li>
+                    </ul>
+                  </td>
+                  <td>
+                    <ul class="list-unstyled">
+                      <li><a href="#leinster">Leinster</a></li>
+                    </ul>
+                  </td>
+                  <td>
+                    <ul class="list-unstyled">
+                      <li><a href="#munster">Munster</a></li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <section id="connacht" class="my-4">
+            <h2>Connacht</h2>
+            <p>Information about Ulster...</p>
+          </section>
+          <!-- Bootstrap Card Deck for Galgorm weekend -->
+          <div class="card-deck border">
+
+            <!-- Heading -->
+            <div class="card border-0">
+              <div class="card-body">
+                <h3 class="card-title">Galgorm Luxury Resort & Spa, Ballymena, Northern Ireland</h3>
+              </div>
+            </div>
+
+            <!-- Hotel Card -->
+            <div class="card border-0">
+              <div class="card-body">
+                <h3 class="card-title">Hotel</h3>
+                <!-- Hotel 1 Details -->
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+              </div>
+            </div>
+
+            <!-- Restaurant Card -->
+            <div class="card border-0">
+              <div class="card-body">
+                <h3 class="card-title">Restaurant</h3>
+                <!-- Restaurant 1 Details -->
+                <p class="card-text">Donec iaculis est urna, id rutrum odio luctus sed...</p>
+              </div>
+            </div>
+
+            <!-- Walk Card -->
+            <div class="card border-0">
+              <div class="card-body">
+                <h3 class="card-title">Walk</h3>
+                <!-- Walk 1 Details -->
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+              </div>
+            </div>
+
+            <!-- Map Card as a Link with Bootstrap Styling -->
+            <a href="map.html" class="card border-0 text-decoration-none shadow-sm">
+              <div class="card-body">
+                <h3 class="card-title text-primary">Map</h3>
+                <p class="card-text text-muted">Click here to view the map in detail.</p>
+                <!-- Map Icon -->
+                <div class="d-flex justify-content-center">
+                  <i class="fas fa-map-marker-alt fa-3x text-primary"></i>
+                </div>
+              </div>
+            </a>
+          </div><!-- End of card-deck -->
+
+          <section id="connacht" class="my-4">
+            <h2>Connacht</h2>
+            <p>Information about Connacht...</p>
+          </section>
+
+          <section id="leinster" class="my-4">
+            <h2>Leinster</h2>
+            <p>Information about Leinster...</p>
+          </section>
+
+          <section id="munster" class="my-4">
+            <h2>Munster</h2>
+            <p>Information about Munster...</p>
+          </section>
+          <!-- Bootstrap Card Deck for Castemartyr weekend -->
+          <div class="card-deck border">
+
+            <!-- Heading -->
+            <div class="card border-0">
+              <div class="card-body">
+                <h3 class="card-title">The Park Hotel, Dungarvan, Co. Waterford</h3>
+              </div>
+            </div>
+
+            <!-- Hotel Card -->
+            <div class="card border-0">
+              <div class="card-body">
+                <h3 class="card-title">Hotel</h3>
+                <!-- Hotel 2 Details -->
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+              </div>
+            </div>
+
+            <!-- Restaurant Card -->
+            <div class="card border-0">
+              <div class="card-body">
+                <h3 class="card-title">Restaurant</h3>
+                <!-- Restaurant 2 Details -->
+                <p class="card-text">Donec iaculis est urna, id rutrum odio luctus sed...</p>
+              </div>
+            </div>
+
+            <!-- Walk Card -->
+            <div class="card border-0">
+              <div class="card-body">
+                <h3 class="card-title">Walk</h3>
+                <!-- Walk 2 Details -->
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+              </div>
+            </div>
+
+            <!-- Map Card as a Link with Bootstrap Styling -->
+            <a href="map.html" class="card border-0 text-decoration-none shadow-sm">
+              <div class="card-body">
+                <h3 class="card-title text-primary">Map</h3>
+                <p class="card-text text-muted">Click here to view the map in detail.</p>
+                <!-- Map Icon -->
+                <div class="d-flex justify-content-center">
+                  <i class="fas fa-map-marker-alt fa-3x text-primary"></i>
+                </div>
+              </div>
+            </a>
+          </div><!-- End of card-deck -->
+
+        </div>
+
+
+        <!-- More info button -->
+        <div class="text-center pb-3">
+          <a href="map.html" class="btn btn-primary">Go to Map</a>
+        </div>
+  </main>
+
   <!-- Footer -->
   <footer class="footer mt-3 py-3 bg-dark text-white text-center">
     <div class="container">
       <span class="d-block">© 2024 Getaways With Our Dog</span>
     </div>
   </footer>
-  
+
   <!-- Bootstrap JS Bundle -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <!-- Leaflet JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet-gpx@1.7.0/gpx.min.js"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <!-- Link to the scripts JavaScript file -->
+  <script src="scripts.js"></script>
 
 </body>
+
 </html>

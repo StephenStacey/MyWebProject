@@ -15,13 +15,16 @@ function toggleResponsiveNav() {
 }
 
 // Initialize map 1
-var map1 = L.map('map1').setView([54.877826, -6.348212], 8); // Example: Galgorm Luxury Resort & Spa, Ballymena, Northern Ireland
+var map1 = L.map('map1').setView([53.3331, -6.2489], 6); // Centered on Ireland with a zoom level that shows the whole country
+
+// Add tile layer
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map1);
 
+//Galgorm Luxury Resort & Spa, Ballymena, Northern Ireland
 L.marker([54.877826, -6.348212]).addTo(map1)
-  .bindPopup('Hotel')
+  .bindPopup('Galgorm Luxury Resort & Spa, Ballymena, Northern Ireland')
   .openPopup();
 L.marker([55.17070, -6.72752]).addTo(map1)
   .bindPopup('This is Harry`s Shack.')
@@ -62,7 +65,26 @@ var polyline2 = L.polyline(latlngs2, { color: 'red' }).addTo(map1);
 // Add a popup label to the polyline
 polyline2.bindPopup("This is the beach walk")
 
+//Castlemartyr, Co. Cork
+L.marker([51.911408, -8.063414]).addTo(map1)
+  .bindPopup('Castlemartyr Resort, Co. Cork')
+  .openPopup();
 
+//The Park Hotel, Dungarvan, Co. Waterford.
+L.marker([52.09474497306979, -7.6234525899288]).addTo(map1)
+  .bindPopup('The Park Hotel, Dungarvan, Co. Waterford.')
+  .openPopup();
+
+L.marker([52.09941317016307, -7.537921800491051]).addTo(map1)
+  .bindPopup('This is parking A.');
+
+L.marker([52.09460654297441, -7.545316551539263]).addTo(map1)
+  .bindPopup('This is parking B.');
+
+L.marker([52.08798858933513, -7.549093981901171]).addTo(map1)
+  .bindPopup('This is parking C.');
+
+//Map controls
 // Add satellite tile layer
 var satelliteLayer1 = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
   attribution: '&copy; Esri'
@@ -81,75 +103,6 @@ var baseLayers1 = {
 
 // Add a layer control to the map
 L.control.layers(baseLayers1).addTo(map1);
-
-
-// Initialize map 2
-var map2 = L.map('map2').setView([51.911408, -8.063414], 9); // Example: Castlemartyr, Co. Cork
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map2);
-L.marker([51.911408, -8.063414]).addTo(map2)
-  .bindPopup('Hotel')
-  .openPopup();
-
-// Add satellite tile layer
-var satelliteLayer2 = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-  attribution: '&copy; Esri'
-}).addTo(map2);
-
-// Add street tile layer as the default layer
-var streetLayer2 = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; OpenStreetMap contributors'
-}).addTo(map2);
-
-// Create a base layers object for easy toggling
-var baseLayers2 = {
-  "Satellite": satelliteLayer2,
-  "Streets": streetLayer2
-};
-
-// Add a layer control to the map
-L.control.layers(baseLayers2).addTo(map2);
-
-
-// Initialize map 3
-var map3 = L.map('map3').setView([52.09474497306979, -7.6234525899288], 9); // Example: The Park Hotel, Dungarvan, Co. Waterford
-
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map3);
-
-L.marker([52.09474497306979, -7.6234525899288]).addTo(map3)
-  .bindPopup('Hotel.')
-  .openPopup();
-
-L.marker([52.09941317016307, -7.537921800491051]).addTo(map3)
-  .bindPopup('This is parking A.');
-
-L.marker([52.09460654297441, -7.545316551539263]).addTo(map3)
-  .bindPopup('This is parking B.');
-
-L.marker([52.08798858933513, -7.549093981901171]).addTo(map3)
-  .bindPopup('This is parking C.');
-
-// Add satellite tile layer
-var satelliteLayer3 = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-  attribution: '&copy; Esri'
-}).addTo(map3);
-
-// Add street tile layer as the default layer
-var streetLayer3 = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; OpenStreetMap contributors'
-}).addTo(map3);
-
-// Create a base layers object for easy toggling
-var baseLayers3 = {
-  "Satellite": satelliteLayer3,
-  "Streets": streetLayer3
-};
-
-// Add a layer control to the map
-L.control.layers(baseLayers3).addTo(map3);
 
 /*
 // Add GPX file
@@ -180,3 +133,5 @@ new L.GPX(
   map1.fitBounds(e.target.getBounds());
 }).addTo(map1);
 */
+
+
