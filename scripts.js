@@ -28,32 +28,55 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map1);
 
+// Define a custom hotel icon using Font Awesome
+var hotel_icon = L.divIcon({
+  className: 'hotel-icon',
+  html: '<i class="fa fa-map-marker" style="color: green; font-size: 24px;"></i>',
+  iconSize: [25, 41]
+});
+
+// Define a custom restaurant icon using Font Awesome
+var restaurant_icon = L.divIcon({
+  className: 'restaurant-icon',
+  html: '<i class="fa fa-map-marker" style="color: yellow; font-size: 24px;"></i>',
+  iconSize: [25, 41]
+});
+
+// Define a custom POI icon using Font Awesome
+var poi_icon = L.divIcon({
+  className: 'custom-icon',
+  html: '<i class="fa fa-map-marker" style="color: blue; font-size: 24px;"></i>',
+  iconSize: [25, 41]  
+});
+
 //Galgorm Luxury Resort & Spa, Ballymena, Northern Ireland
-L.marker([54.877826, -6.348212]).addTo(map1)
+L.marker([54.877826, -6.348212], { icon: hotel_icon }).addTo(map1)
   .bindPopup('Galgorm Luxury Resort & Spa, Ballymena, Northern Ireland');
-L.marker([55.17070, -6.72752]).addTo(map1)
+L.marker([55.17070, -6.72752], { icon: restaurant_icon }).addTo(map1)
   .bindPopup('This is Harry`s Shack.');
-L.marker([55.1710160929136, -6.731610778284048]).addTo(map1)
+L.marker([55.1710160929136, -6.731610778284048], { icon: poi_icon }).addTo(map1)
   .bindPopup('Parking for Port Stewart beach');
-L.marker([55.16791, -6.87563]).addTo(map1)
+L.marker([55.16791, -6.87563], { icon: poi_icon }).addTo(map1)
   .bindPopup('Parking for Benone beach');
-L.marker([55.16634339422888, -6.820533496809242]).addTo(map1)
+L.marker([55.16634339422888, -6.820533496809242], { icon: poi_icon }).addTo(map1)
   .bindPopup('Very small parking for Benone beach');
-L.marker([55.1662169985367, -6.820683700515766]).addTo(map1)
+L.marker([55.1662169985367, -6.820683700515766], { icon: poi_icon }).addTo(map1)
   .bindPopup('Public toilets');
 
 //Castlemartyr, Co. Cork
-L.marker([51.911408, -8.063414]).addTo(map1)
+L.marker([51.911408, -8.063414], { icon: hotel_icon })
+.addTo(map1)
   .bindPopup('Castlemartyr Resort, Co. Cork');
 
 //The Park Hotel, Dungarvan, Co. Waterford.
-L.marker([52.09474497306979, -7.6234525899288]).addTo(map1)
+L.marker([52.09474497306979, -7.6234525899288], { icon: hotel_icon })
+  .addTo(map1)
   .bindPopup('The Park Hotel, Dungarvan, Co. Waterford.');
-L.marker([52.09941317016307, -7.537921800491051]).addTo(map1)
+L.marker([52.09941317016307, -7.537921800491051], { icon: poi_icon }).addTo(map1)
   .bindPopup('This is parking A.');
-L.marker([52.09460654297441, -7.545316551539263]).addTo(map1)
+L.marker([52.09460654297441, -7.545316551539263], { icon: poi_icon }).addTo(map1)
   .bindPopup('This is parking B.');
-L.marker([52.08798858933513, -7.549093981901171]).addTo(map1)
+L.marker([52.08798858933513, -7.549093981901171], { icon: poi_icon }).addTo(map1)
   .bindPopup('This is parking C.');
 
 // Add polyline - Port Stewart beach
