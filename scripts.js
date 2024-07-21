@@ -46,7 +46,7 @@ var restaurant_icon = L.divIcon({
 var poi_icon = L.divIcon({
   className: 'custom-icon',
   html: '<i class="fa fa-map-marker" style="color: blue; font-size: 24px;"></i>',
-  iconSize: [25, 41]  
+  iconSize: [25, 41]
 });
 
 //Galgorm Luxury Resort & Spa, Ballymena, Northern Ireland
@@ -65,7 +65,7 @@ L.marker([55.1662169985367, -6.820683700515766], { icon: poi_icon }).addTo(map1)
 
 //Castlemartyr, Co. Cork
 L.marker([51.911408, -8.063414], { icon: hotel_icon })
-.addTo(map1)
+  .addTo(map1)
   .bindPopup('Castlemartyr Resort, Co. Cork');
 
 //The Park Hotel, Dungarvan, Co. Waterford.
@@ -119,7 +119,7 @@ var latlngs3 = [
 ];
 var polyline3 = L.polyline(latlngs3, { color: 'red' }).addTo(map1);
 // Add a popup label to the polyline
-polyline3.bindPopup("This is the beach walk") 
+polyline3.bindPopup("This is the beach walk")
 
 //MAP CONTROLS
 // Add satellite tile layer
