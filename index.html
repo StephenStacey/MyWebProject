@@ -26,13 +26,13 @@
 
     .text-overlay {
       position: absolute;
-      bottom: 10%;
+      bottom: 0%;
       left: 50%;
       transform: translateX(-50%);
       background-color: rgba(0, 0, 0, 0.5);
       /* Semi-transparent background */
       color: #fff;
-      padding: 20px;
+      padding: 10px;
       border-radius: 10px;
       width: 80%;
       /* Adjust width as needed */
@@ -40,8 +40,22 @@
       /* Optional max width */
       text-align: center;
       z-index: 10;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       /* Space from the bottom */
+    }
+
+    td {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .video-container {
+      border: 10px solid #ddd;
+      padding: 0px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: #f8f9fa;
+      margin-top: 0px;
     }
   </style>
 </head>
@@ -77,9 +91,9 @@
   <!-- Carousel Section -->
   <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-      <div class="carousel-item active" style="background-image: url('Images/Dog with view behind.jpg');"></div>
-      <div class="carousel-item" style="background-image: url('Images/Dog looking at camera 2.jpg');"></div>
+      <div class="carousel-item active" style="background-image: url('Images/Dog looking at camera 2.jpg');"></div>
       <div class="carousel-item" style="background-image: url('Images/Dog in basket.jpg');"></div>
+      <div class="carousel-item" style="background-image: url('Images/Dog with view behind.jpg');"></div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -108,11 +122,13 @@
 <!-- Main Content -->
 <main class="container-flex pt-5">
   <!-- Local Video Embed -->
-  <div class="ratio ratio-16x9">
-    <video controls>
-      <source src="Images/Blue skies Mobi in french beach with drone footage.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+  <div class="container">
+    <div class="video-container ratio ratio-16x9">
+      <video controls>
+        <source src="Images/Blue skies Mobi in french beach with drone footage.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
   </div>
   <!-- Getaways by Province section -->
   <div class="container my-5">
@@ -122,22 +138,22 @@
         <tbody>
           <tr>
             <td>
-              <ul class="list-unstyled">
+              <ul class="list-unstyled mb-0">
                 <li><a href="#ulster">Ulster</a></li>
               </ul>
             </td>
             <td>
-              <ul class="list-unstyled">
+              <ul class="list-unstyled mb-0">
                 <li><a href="#connacht">Connacht</a></li>
               </ul>
             </td>
             <td>
-              <ul class="list-unstyled">
+              <ul class="list-unstyled mb-0">
                 <li><a href="#leinster">Leinster</a></li>
               </ul>
             </td>
             <td>
-              <ul class="list-unstyled">
+              <ul class="list-unstyled mb-0">
                 <li><a href="#munster">Munster</a></li>
               </ul>
             </td>
@@ -148,14 +164,14 @@
 
     <!-- Ulster Section -->
     <section id="ulster" class="my-4">
-      <h2>Ulster</h2>
+      <h2 class="text-center">Ulster</h2>
       <div class="card-deck border">
         <!-- Hotel Card -->
         <div class="card border-0">
           <div class="card-body">
             <h3 class="card-title">Hotel</h3>
-            <p class="card-text"></p><b>Galgorm Luxury Resort & Spa, Ballymena, Northern Ireland.</b><br>
-            Luxurious and dog-friendly accommodation with exceptional amenities.</p>
+            <p class="card-text"><b>Galgorm Luxury Resort & Spa, Ballymena, Northern Ireland.</b><br>
+              Luxurious and dog-friendly accommodation with exceptional amenities.</p>
           </div>
         </div>
 
@@ -190,7 +206,7 @@
 
     <!-- Connacht Section -->
     <section id="connacht" class="my-4">
-      <h2>Connacht</h2>
+      <h2 class="text-center">Connacht</h2>
       <div class="card-deck border">
         <!-- Hotel Card -->
         <div class="card border-0">
@@ -231,7 +247,7 @@
 
     <!-- Leinster Section -->
     <section id="leinster" class="my-4">
-      <h2>Leinster</h2>
+      <h2 class="text-center">Leinster</h2>
       <div class="card-deck border">
         <!-- Hotel Card -->
         <div class="card border-0">
@@ -272,7 +288,7 @@
 
     <!-- Munster Section -->
     <section id="munster" class="my-4">
-      <h2>Munster</h2>
+      <h2 class="text-center">Munster</h2>
       <div class="card-deck border">
         <!-- Hotel Card -->
         <div class="card border-0">
