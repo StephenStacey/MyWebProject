@@ -28,6 +28,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map1);
 
+
 // Define a custom hotel icon using Font Awesome
 var hotel_icon = L.divIcon({
   className: 'hotel-icon',
@@ -48,6 +49,7 @@ var poi_icon = L.divIcon({
   html: '<i class="fa fa-map-marker" style="color: blue; font-size: 24px;"></i>',
   iconSize: [25, 41]
 });
+
 
 //Galgorm Luxury Resort & Spa, Ballymena, Northern Ireland
 L.marker([54.877826, -6.348212], { icon: hotel_icon }).addTo(map1)
@@ -137,6 +139,29 @@ var baseLayers1 = {
 };
 // Add a layer control to the map
 L.control.layers(baseLayers1).addTo(map1);
+
+// Function to get URL parameters
+function getQueryParams() {
+  var params = {};
+  var queryString = window.location.search.substring(1);
+  var regex = /([^&=]+)=([^&]*)/g;
+  var m;
+
+  while (m = regex.exec(queryString)) {
+    params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+  }
+
+  return params;
+}
+
+// Parse the parameters
+var params = getQueryParams();
+var lat = parseFloat(params.lat) || 53.5;
+var lng = parseFloat(params.lng) || -8.0;
+var zoom = parseInt(params.zoom) || 6.5;
+
+// Set the map view based on the parameters
+map1.setView([lat, lng], zoom);
 
 /*
 
