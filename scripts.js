@@ -18,8 +18,8 @@ function toggleResponsiveNav() {
 var map1 = L.map('map1', {
   center: [53.5, -8.0],
   zoom: 6.5, // Set the zoom level to a decimal value
-  zoomSnap: 0.3, // Allow zooming in smaller increments
-  zoomDelta: 0.3 // Allow zooming in smaller steps when using controls
+  zoomSnap: 0.5, // Allow zooming in smaller increments
+  zoomDelta: 0.5 // Allow zooming in smaller steps when using controls
 });
 
 
