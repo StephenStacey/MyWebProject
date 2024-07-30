@@ -175,5 +175,7 @@ new L.GPX(gpxFileUrl, {
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.4.0/images/pin-shadow.png'
   }
 }).on('loaded', function(e) {
-  map1.fitBounds(e.target.getBounds());
+  if (!mapViewSet) {
+    map1.fitBounds(e.target.getBounds());
+  }
 }).addTo(map1);
