@@ -140,6 +140,7 @@ var baseLayers1 = {
 // Add a layer control to the map
 L.control.layers(baseLayers1).addTo(map1);
 
+//BESPOKE XY AND ZOOM LEVEL
 // Function to get URL parameters
 function getQueryParams() {
   var params = {};
@@ -163,10 +164,9 @@ var zoom = parseInt(params.zoom) || 6.5;
 // Set the map view based on the parameters
 map1.setView([lat, lng], zoom);
 
-/*
-
-// ADD GPX FILE
+// Add GPX file
 var gpxFileUrl = 'GPX_files/Galgorm_river_walk_1.gpx'; // Replace with the actual path to your GPX file
+
 new L.GPX(gpxFileUrl, {
   async: true,
   marker_options: {
@@ -176,35 +176,4 @@ new L.GPX(gpxFileUrl, {
   }
 }).on('loaded', function(e) {
   map1.fitBounds(e.target.getBounds());
-}).addTo(map1); 
-
-
-// Add GPX file
-var gpx1 ="GPX_files/Galgorm_river_walk_1.gpx"; // Path to your GPX file
-new L.GPX(gpx1, {
-    async: true,
-}).on('loaded', function(e) {
-    map1.fitBounds(e.target.getBounds());
 }).addTo(map1);
-
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map1);
-
-
-var gpx1 = "GPX_files/Galgorm_river_walk_1.gpx"; // Path to your GPX file
-
-new L.GPX(
-  gpx1,
-  {
-    async: true,
-    marker_options: {
-      startIconUrl: 'https://cdn.jsdelivr.net/npm/leaflet-gpx@1.7.0/pin-icon-start.png',
-      endIconUrl: 'https://cdn.jsdelivr.net/npm/leaflet-gpx@1.7.0/pin-icon-end.png',
-      shadowUrl: 'https://cdn.jsdelivr.net/npm/leaflet-gpx@1.7.0/pin-shadow.png'
-    }
-  }
-).on('loaded', function (e) {
-  map1.fitBounds(e.target.getBounds());
-}).addTo(map1);
-*/
