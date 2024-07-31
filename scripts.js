@@ -168,6 +168,9 @@ var lat = parseFloat(params.lat) || 53.5;
 var lng = parseFloat(params.lng) || -8.0;
 var zoom = parseInt(params.zoom) || 6.5;
 
+// Set the map view based on the parameters
+map1.setView([lat, lng], zoom);
+
 // Add GPX file
 var gpxFileUrl = 'GPX_files/Galgorm_river_walk_1.gpx'; // Replace with the actual path to your GPX file
 
