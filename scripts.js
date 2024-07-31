@@ -33,28 +33,28 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 var hotel_icon = L.divIcon({
   className: 'hotel-icon',
   html: '<i class="fa fa-map-marker" style="color: green; font-size: 16px;"></i>',
-  iconSize: [20, 34]
+  iconSize: [15, 29]
 });
 
 // Define a custom restaurant icon using Font Awesome
 var restaurant_icon = L.divIcon({
   className: 'restaurant-icon',
   html: '<i class="fa fa-map-marker" style="color: black; font-size: 16px;"></i>',
-  iiconSize: [20, 34]
+  iconSize: [15, 29]
 });
 
 // Define a custom POI icon using Font Awesome
 var poi_icon = L.divIcon({
   className: 'POI-icon',
   html: '<i class="fa fa-map-marker" style="color: blue ; font-size: 16px;"></i>',
-  iconSize: [20, 34]
+  iconSize: [15, 29]
 });
 
 // Define a custom Start/Finish icon using Font Awesome
 var StartFinish_icon = L.divIcon({
   className: 'StartFinish-icon',
   html: '<i class="fa fa-map-marker" style="color: yellow ; font-size: 16px;"></i>',
-  iconSize: [20, 34]
+  iconSize: [15, 29]
 });
 
 
