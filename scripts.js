@@ -182,5 +182,7 @@ new L.GPX(gpxFileUrl, {
     color: 'red' // Set the line color to red
   }
 }).on('loaded', function(e) {
-  map1.fitBounds(e.target.getBounds());
+  if (!mapViewSet) {
+    map1.fitBounds(e.target.getBounds());
+  }
 }).addTo(map1);
