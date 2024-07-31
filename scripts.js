@@ -32,22 +32,29 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // Define a custom hotel icon using Font Awesome
 var hotel_icon = L.divIcon({
   className: 'hotel-icon',
-  html: '<i class="fa fa-map-marker" style="color: green; font-size: 24px;"></i>',
-  iconSize: [25, 41]
+  html: '<i class="fa fa-map-marker" style="color: green; font-size: 16px;"></i>',
+  iconSize: [20, 34]
 });
 
 // Define a custom restaurant icon using Font Awesome
 var restaurant_icon = L.divIcon({
   className: 'restaurant-icon',
-  html: '<i class="fa fa-map-marker" style="color: yellow; font-size: 24px;"></i>',
-  iconSize: [25, 41]
+  html: '<i class="fa fa-map-marker" style="color: black; font-size: 16px;"></i>',
+  iiconSize: [20, 34]
 });
 
 // Define a custom POI icon using Font Awesome
 var poi_icon = L.divIcon({
-  className: 'custom-icon',
-  html: '<i class="fa fa-map-marker" style="color: blue; font-size: 24px;"></i>',
-  iconSize: [25, 41]
+  className: 'POI-icon',
+  html: '<i class="fa fa-map-marker" style="color: blue ; font-size: 16px;"></i>',
+  iconSize: [20, 34]
+});
+
+// Define a custom Start/Finish icon using Font Awesome
+var StartFinish_icon = L.divIcon({
+  className: 'StartFinish-icon',
+  html: '<i class="fa fa-map-marker" style="color: yellow ; font-size: 16px;"></i>',
+  iconSize: [20, 34]
 });
 
 
@@ -161,21 +168,39 @@ var lat = parseFloat(params.lat) || 53.5;
 var lng = parseFloat(params.lng) || -8.0;
 var zoom = parseInt(params.zoom) || 6.5;
 
-// Set the map view based on the parameters
-map1.setView([lat, lng], zoom);
-
 // Add GPX file
 var gpxFileUrl = 'GPX_files/Galgorm_river_walk_1.gpx'; // Replace with the actual path to your GPX file
 
 new L.GPX(gpxFileUrl, {
   async: true,
   marker_options: {
+    startIcon: StartFinish_icon, // Use the custom icon for start
+    endIcon: StartFinish_icon    // Use the custom icon for end
+  },
+  polyline_options: {
+    color: 'red' // Set the line color to red
+  }
+}).on('loaded', function (e) {
+  if (!mapViewSet) {
+    map1.fitBounds(e.target.getBounds());
+  }
+}).addTo(map1);
+
+
+/*
+//new L.GPX(gpxFileUrl, {
+  async: true,
+  marker_options: {
     startIconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.4.0/images/pin-icon-start.png',
     endIconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.4.0/images/pin-icon-end.png',
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.4.0/images/pin-shadow.png'
+  },
+  polyline_options: {
+    color: 'red' // Set the line color to red
   }
 }).on('loaded', function(e) {
   if (!mapViewSet) {
     map1.fitBounds(e.target.getBounds());
   }
 }).addTo(map1);
+*/
