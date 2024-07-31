@@ -174,23 +174,6 @@ var gpxFileUrl = 'GPX_files/Galgorm_river_walk_1.gpx'; // Replace with the actua
 new L.GPX(gpxFileUrl, {
   async: true,
   marker_options: {
-    startIcon: StartFinish_icon, // Use the custom icon for start
-    endIcon: StartFinish_icon    // Use the custom icon for end
-  },
-  polyline_options: {
-    color: 'red' // Set the line color to red
-  }
-}).on('loaded', function (e) {
-  if (!mapViewSet) {
-    map1.fitBounds(e.target.getBounds());
-  }
-}).addTo(map1);
-
-
-/*
-//new L.GPX(gpxFileUrl, {
-  async: true,
-  marker_options: {
     startIconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.4.0/images/pin-icon-start.png',
     endIconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.4.0/images/pin-icon-end.png',
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.4.0/images/pin-shadow.png'
@@ -203,4 +186,3 @@ new L.GPX(gpxFileUrl, {
     map1.fitBounds(e.target.getBounds());
   }
 }).addTo(map1);
-*/
