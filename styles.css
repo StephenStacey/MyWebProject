@@ -5,7 +5,8 @@ body {
   padding: 0;
 }
 
-header, footer {
+header,
+footer {
   background-color: #333;
   color: #fff;
   text-align: center;
@@ -20,112 +21,58 @@ section {
   margin-bottom: 30px;
 }
 
-h1, h2 {
+h1,
+h2 {
   color: #333;
-}
-
-/* Photo Container Styles */
-.photo-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin: 30px;
-}
-
-.photo-container img {
-  width: 500px;
-  height: 400px;
-  object-fit: cover;
-  margin-bottom: 10px;
-}
-
-/* Video Styles */
-#video {
-  text-align: center;
-}
-
-video {
-  width: 100%;
-  max-width: 300px;
-  height: auto;
-  margin: 0 auto;
-  display: block;
-}
-
-video::-webkit-media-controls {
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-video::-webkit-media-controls-play-button,
-video::-webkit-media-controls-timeline {
-  color: white;
-}
-
-video::-webkit-media-controls-play-button {
-  font-size: 2em;
-}
-
-/* Weekend Groups Styles */
-.Weekend-group {
-  border: 2px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 20px;
-}
-
-.Weekend-group h2 {
-  margin-top: 0;
-  color: #333;
-}
-
-.weekend-item {
-  margin-bottom: 15px;
-}
-
-.weekend-item h3 {
-  margin-top: 0;
-  color: #555;
-}
-
-.weekend-item:not(:last-child) {
-  margin-bottom: 10px;
-}
-
-.Weekend-group:last-child {
-  margin-bottom: 0;
-}
-
-.Weekend-group h2:last-child {
-  margin-bottom: 0;
-}
-
-/* Weather API Styles */
-.container {
-  max-width: 600px;
-  margin: 50px auto;
-  text-align: center;
-}
-
-.weather-info {
-  background-color: #f0f0f0;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Modal Styles */
-.row > .column {
-  padding: 0 8px;
-}
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
 }
 
 /* Create four equal columns that floats next to eachother */
 .column {
   float: left;
   width: 25%;
+}
+
+/* Map container */
+#map {
+  height: 400px;
+  width: 100%;
+}
+
+/* Legend container */
+.legend {
+  background: white;
+  padding: 8px;
+  /* Reduced padding for a smaller box */
+  font-size: 12px;
+  /* Smaller font size */
+  border: 1px solid #ddd;
+  /* Border color */
+  border-radius: 0.25rem;
+  /* Rounded corners */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow */
+  width: 120px;
+  /* Smaller fixed width */
+  margin: 10px;
+  /* Margin around the legend */
+  z-index: 1000;
+  /* Ensure it stays on top of other elements */
+  text-align: left;
+  /* Align text to the left */
+}
+
+/* Legend icon styling */
+.legend i {
+  width: 20px;
+  /* Icon size */
+  height: 20px;
+  /* Icon size */
+  margin-right: 10px;
+  /* Space between icon and text */
+  line-height: 20px;
+  /* Align text vertically */
+  display: inline-block;
+  /* Align icons and text */
+  vertical-align: middle;
+  /* Vertically align icons with text */
 }

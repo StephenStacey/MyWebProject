@@ -32,30 +32,42 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // Define a custom hotel icon using Font Awesome
 var hotel_icon = L.divIcon({
   className: 'hotel-icon',
-  html: '<i class="fa fa-map-marker" style="color: green; font-size: 16px;"></i>',
-  iconSize: [15, 29]
+  html: '<i class="fa fa-map-marker" style="color: green; font-size: 20px;"></i>', // Green color
+  iconSize: [15, 29] // Adjust size as needed
 });
 
 // Define a custom restaurant icon using Font Awesome
 var restaurant_icon = L.divIcon({
   className: 'restaurant-icon',
-  html: '<i class="fa fa-map-marker" style="color: black; font-size: 16px;"></i>',
-  iconSize: [15, 29]
+  html: '<i class="fa fa-map-marker" style="color: orange; font-size: 20px;"></i>', // Dark color
+  iconSize: [15, 29] // Adjust size as needed
 });
 
-// Define a custom POI icon using Font Awesome
+// Define a custom Point of Interest (POI) icon using Font Awesome
 var poi_icon = L.divIcon({
   className: 'POI-icon',
-  html: '<i class="fa fa-map-marker" style="color: blue ; font-size: 16px;"></i>',
-  iconSize: [15, 29]
+  html: '<i class="fa fa-map-marker" style="color: blue; font-size: 20px;"></i>', // Blue color
+  iconSize: [15, 29] // Adjust size as needed
 });
 
-// Define a custom Start/Finish icon using Font Awesome
-var StartFinish_icon = L.divIcon({
-  className: 'StartFinish-icon',
-  html: '<i class="fa fa-map-marker" style="color: yellow ; font-size: 16px;"></i>',
-  iconSize: [15, 29]
+// Define a custom line icon using SVG
+var line_icon = L.divIcon({
+  className: 'line-icon',
+  html: '<svg width="30" height="2"><rect width="15" height="2" style="fill:red;"></rect></svg>', // SVG for the line
+  iconSize: [30, 2] // Adjust size to fit the line
 });
+
+// Add Legend
+var legend = L.control({ position: 'bottomright' });
+legend.onAdd = function (map) {
+  var div = L.DomUtil.create('div', 'legend');
+  div.innerHTML += '<i class="fa fa-map-marker" style="color: green; font-size: 12px;"></i> Hotel<br>';
+  div.innerHTML += '<i class="fa fa-map-marker" style="color: orange; font-size: 12px;"></i> Restaurant<br>';
+  div.innerHTML += '<i class="fa fa-map-marker" style="color: blue ; font-size: 12px;"></i> POI<br>';
+  div.innerHTML += '<svg width="30" height="2"><rect width="15" height="2" style="fill:red;"></rect></svg> Walk<br>'; // Red line for Walk
+  return div;
+};
+legend.addTo(map1);
 
 
 //Galgorm Luxury Resort & Spa, Ballymena, Northern Ireland
@@ -164,7 +176,7 @@ function getQueryParams() {
 
 // Parse the parameters
 var params = getQueryParams();
-var lat = parseFloat(params.lat) || 53.5;
+var lat = parseFloat(params.lat) || 53.3;
 var lng = parseFloat(params.lng) || -8.0;
 var zoom = parseInt(params.zoom) || 6.5;
 
@@ -184,7 +196,7 @@ new L.GPX(gpxFileUrl, {
   polyline_options: {
     color: 'red' // Set the line color to red
   }
-}).on('loaded', function(e) {
+}).on('loaded', function (e) {
   if (!mapViewSet) {
     map1.fitBounds(e.target.getBounds());
   }
