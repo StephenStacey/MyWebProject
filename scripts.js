@@ -6,7 +6,7 @@
   Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon 
 */
 function toggleResponsiveNav() {
-  var x = document.getElementById("myTopnav");
+  let x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
     x.className += " responsive";
   } else {
@@ -15,7 +15,7 @@ function toggleResponsiveNav() {
 }
 
 // Initialize map with fractional zoom
-var map1 = L.map('map1', {
+let map1 = L.map('map1', {
   center: [53.5, -8.0],
   zoom: 6.5, // Set the zoom level to a decimal value
   zoomSnap: 0.5, // Allow zooming in smaller increments
@@ -30,37 +30,37 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 
 // Define a custom hotel icon using Font Awesome
-var hotel_icon = L.divIcon({
+let hotel_icon = L.divIcon({
   className: 'hotel-icon',
   html: '<i class="fa fa-map-marker" style="color: green; font-size: 20px;"></i>', // Green color
   iconSize: [15, 29] // Adjust size as needed
 });
 
 // Define a custom restaurant icon using Font Awesome
-var restaurant_icon = L.divIcon({
+let restaurant_icon = L.divIcon({
   className: 'restaurant-icon',
   html: '<i class="fa fa-map-marker" style="color: orange; font-size: 20px;"></i>', // Dark color
   iconSize: [15, 29] // Adjust size as needed
 });
 
 // Define a custom Point of Interest (POI) icon using Font Awesome
-var poi_icon = L.divIcon({
+let poi_icon = L.divIcon({
   className: 'POI-icon',
   html: '<i class="fa fa-map-marker" style="color: blue; font-size: 20px;"></i>', // Blue color
   iconSize: [15, 29] // Adjust size as needed
 });
 
 // Define a custom line icon using SVG
-var line_icon = L.divIcon({
+let line_icon = L.divIcon({
   className: 'line-icon',
   html: '<svg width="30" height="2"><rect width="15" height="2" style="fill:red;"></rect></svg>', // SVG for the line
   iconSize: [30, 2] // Adjust size to fit the line
 });
 
 // Add Legend
-var legend = L.control({ position: 'bottomright' });
+let legend = L.control({ position: 'bottomright' });
 legend.onAdd = function (map) {
-  var div = L.DomUtil.create('div', 'legend');
+  let div = L.DomUtil.create('div', 'legend');
   div.innerHTML += '<i class="fa fa-map-marker" style="color: green; font-size: 12px;"></i> Hotel<br>';
   div.innerHTML += '<i class="fa fa-map-marker" style="color: orange; font-size: 12px;"></i> Restaurant<br>';
   div.innerHTML += '<i class="fa fa-map-marker" style="color: blue ; font-size: 12px;"></i> POI<br>';
@@ -101,18 +101,18 @@ L.marker([52.08798858933513, -7.549093981901171], { icon: poi_icon }).addTo(map1
   .bindPopup('This is parking C.');
 
 // Add polyline - Port Stewart beach
-var latlngs1 = [
+let latlngs1 = [
   [55.172211112373844, -6.726923090146396], // Starting point
   [55.16932389557984, -6.745177505837924], // Next point
   [55.16768160916797, -6.768523453366122], // Next point
   // Add more points as needed
 ];
-var polyline1 = L.polyline(latlngs1, { color: 'red' }).addTo(map1);
+let polyline1 = L.polyline(latlngs1, { color: 'red' }).addTo(map1);
 // Add a popup label to the polyline
 polyline1.bindPopup("This is the beach walk")
 
 // Add polyline - Benone beach
-var latlngs2 = [
+let latlngs2 = [
   [55.19458805432642, -6.956784668828034], // Starting point
   [55.18899505623539, -6.9467258214821035], // Next point
   [55.17855892696065, -6.925351901841416], // Next point
@@ -124,12 +124,12 @@ var latlngs2 = [
   [55.16801573457866, -6.813679272630311], // Next point
   // Add more points as needed
 ];
-var polyline2 = L.polyline(latlngs2, { color: 'red' }).addTo(map1);
+let polyline2 = L.polyline(latlngs2, { color: 'red' }).addTo(map1);
 // Add a popup label to the polyline
 polyline2.bindPopup("This is the beach walk")
 
 // Add polyline - Clonea beach
-var latlngs3 = [
+let latlngs3 = [
   [52.087239757636205, -7.548554694350869], // Starting point
   [52.09028734816996, -7.547634434575302],// Next point
   [52.09417849740923, -7.544801576869848],// Next point
@@ -138,21 +138,21 @@ var latlngs3 = [
   [52.09911123297765, -7.538305852202822],// Next point
   // Add more points as needed  
 ];
-var polyline3 = L.polyline(latlngs3, { color: 'red' }).addTo(map1);
+let polyline3 = L.polyline(latlngs3, { color: 'red' }).addTo(map1);
 // Add a popup label to the polyline
 polyline3.bindPopup("This is the beach walk")
 
 //MAP CONTROLS
 // Add satellite tile layer
-var satelliteLayer1 = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+let satelliteLayer1 = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
   attribution: '&copy; Esri'
 }).addTo(map1);
 // Add street tile layer as the default layer
-var streetLayer1 = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+let streetLayer1 = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map1);
 // Create a base layers object for easy toggling
-var baseLayers1 = {
+let baseLayers1 = {
   "Satellite": satelliteLayer1,
   "Streets": streetLayer1
 };
@@ -162,10 +162,10 @@ L.control.layers(baseLayers1).addTo(map1);
 //BESPOKE XY AND ZOOM LEVEL
 // Function to get URL parameters
 function getQueryParams() {
-  var params = {};
-  var queryString = window.location.search.substring(1);
-  var regex = /([^&=]+)=([^&]*)/g;
-  var m;
+  let params = {};
+  let queryString = window.location.search.substring(1);
+  let regex = /([^&=]+)=([^&]*)/g;
+  let m;
 
   while (m = regex.exec(queryString)) {
     params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
@@ -175,16 +175,16 @@ function getQueryParams() {
 }
 
 // Parse the parameters
-var params = getQueryParams();
-var lat = parseFloat(params.lat) || 53.3;
-var lng = parseFloat(params.lng) || -8.0;
-var zoom = parseInt(params.zoom) || 6.5;
+let params = getQueryParams();
+let lat = parseFloat(params.lat) || 53.3;
+let lng = parseFloat(params.lng) || -8.0;
+let zoom = parseInt(params.zoom) || 6.5;
 
 // Set the map view based on the parameters
 map1.setView([lat, lng], zoom);
 
 // Add GPX file
-var gpxFileUrl = 'GPX_files/Galgorm_river_walk_1.gpx'; // Replace with the actual path to your GPX file
+let gpxFileUrl = 'GPX_files/Galgorm_river_walk_1.gpx'; // Replace with the actual path to your GPX file
 
 new L.GPX(gpxFileUrl, {
   async: true,
