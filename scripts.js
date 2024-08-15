@@ -14,6 +14,31 @@ function toggleResponsiveNav() {
   }
 }
 
+
+// Search function
+function jumpToKeyword() {
+  const input = document.getElementById('searchInput').value.toLowerCase();
+  const mainElement = document.querySelector('main');
+
+  // Remove existing highlights
+  const highlightedElements = mainElement.querySelectorAll('.highlight');
+  highlightedElements.forEach(element => {
+    element.classList.remove('highlight');
+  });
+
+  // Traverse all text nodes in the main element and highlight the first match
+  const elements = mainElement.querySelectorAll('*');
+  for (let i = 0; i < elements.length; i++) {
+    const element = elements[i];
+    if (element.textContent.toLowerCase().includes(input)) {
+      element.classList.add('highlight');
+      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      break;
+    }
+  }
+}
+
+
 // Initialize map with fractional zoom
 let map1 = L.map('map1', {
   center: [53.5, -8.0],
