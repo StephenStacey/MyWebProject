@@ -141,7 +141,7 @@
   <!-- Getaways by Province section -->
   <div class="container my-5">
     <h1 class="text-center mb-4">Getaways By Province</h1>
-    <div class="table-responsive">
+    <div class="table-responsive mb-4">
       <table class="table table-bordered">
         <tbody>
           <tr>
@@ -169,6 +169,11 @@
         </tbody>
       </table>
     </div>
+
+    <!-- More info button -->
+  <div class="text-center pb-3">
+    <a href="map.html" class="btn btn-primary">Go to Map</a>
+  </div>
 
     <!-- Ulster Section -->
     <section id="ulster" class="my-4">
@@ -344,32 +349,27 @@
   </div>
 
 
-  <!-- More info button -->
-  <div class="text-center pb-3">
-    <a href="map.html" class="btn btn-primary">Go to Map</a>
-  </div>
-
   <!-- Leave a comment -->
-  <div class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <div class="card shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title text-center mb-4">Leave a Comment</h5>
-            <form action="/submit-comment" method="post">
-              <div class="mb-3">
-                <label for="comment" class="form-label">Your Comment</label>
-                <textarea class="form-control" id="comment" name="comment" rows="4" placeholder="Enter your comment here..."></textarea>
-              </div>
-              <div class="d-grid">
-                <button type="submit" class="btn btn-primary btn-block">Submit</button>
-              </div>
-            </form>
-          </div>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title text-center mb-4">Leave a Comment</h5>
+          <form action="/submit-comment" method="post">
+            <div class="mb-3">
+              <textarea class="form-control" id="comment" name="comment" rows="4" placeholder="Enter your comment here..."></textarea>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
+</div>
+
 </main>
 
 <!-- Footer -->

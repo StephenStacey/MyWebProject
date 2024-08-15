@@ -17,24 +17,63 @@ function toggleResponsiveNav() {
 
 // Search function
 function jumpToKeyword() {
-  const input = document.getElementById('searchInput').value.toLowerCase();
-  const mainElement = document.querySelector('main');
+  // Get the search input value
+  const searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
+  
+  // Return early if searchTerm is empty
+  if (searchTerm === "") {
+    alert('Please enter a search term');
+    return;
+  }
 
-  // Remove existing highlights
-  const highlightedElements = mainElement.querySelectorAll('.highlight');
-  highlightedElements.forEach(element => {
-    element.classList.remove('highlight');
-  });
+  // Get all text nodes within the <main> element
+  const mainContent = document.querySelector('main');
+  const textNodes = [];
 
-  // Traverse all text nodes in the main element and highlight the first match
-  const elements = mainElement.querySelectorAll('*');
-  for (let i = 0; i < elements.length; i++) {
-    const element = elements[i];
-    if (element.textContent.toLowerCase().includes(input)) {
-      element.classList.add('highlight');
-      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  // Function to recursively get all text nodes
+  function getTextNodes(element) {
+    if (element.nodeType === Node.TEXT_NODE && element.textContent.trim()) {
+      textNodes.push(element);
+    } else if (element.nodeType === Node.ELEMENT_NODE) {
+      element.childNodes.forEach(getTextNodes);
+    }
+  }
+
+  getTextNodes(mainContent);
+
+  // Find the first occurrence of the search term
+  let found = false;
+  for (const node of textNodes) {
+    const textContent = node.textContent.toLowerCase();
+    const index = textContent.indexOf(searchTerm);
+
+    if (index !== -1) {
+      const range = document.createRange();
+      const selection = window.getSelection();
+      
+      // Set the range to the first occurrence
+      range.setStart(node, index);
+      range.setEnd(node, index + searchTerm.length);
+      
+      // Clear previous selections and add new one
+      selection.removeAllRanges();
+      selection.addRange(range);
+      
+      // Scroll into view
+      const rect = range.getBoundingClientRect();
+      window.scrollTo({
+        top: rect.top + window.scrollY - 100, // Offset for better visibility
+        behavior: 'smooth'
+      });
+      
+      found = true;
       break;
     }
+  }
+
+  // Alert if no matches found
+  if (!found) {
+    alert('No matches found');
   }
 }
 
