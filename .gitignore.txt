@@ -1,7 +1,7 @@
 about.html
 mobi.html
 weather.html
-
+.venv/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
