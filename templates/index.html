@@ -82,29 +82,30 @@
   <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">
-        <img src="https://cdn-icons-png.flaticon.com/512/12/12638.png" alt="Navbar Brand Icon" width="30" height="30">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="/map">Map</a>
-          </li>
-      </ul>
-        <form class="d-flex" role="search" onsubmit="event.preventDefault(); jumpToKeyword();">
-          <input class="form-control me-2" id="searchInput" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
+        <a class="navbar-brand" href="{{ url_for('index') }}">
+            <img src="https://cdn-icons-png.flaticon.com/512/12/12638.png" alt="Navbar Brand Icon" width="30" height="30">
+        </a>    
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('map') }}">Map</a>
+                </li>
+            </ul>
+            <form class="d-flex" role="search" onsubmit="event.preventDefault(); jumpToKeyword();">
+                <input class="form-control me-2" id="searchInput" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
     </div>
-  </nav>
+</nav>
+
 
   <!-- Carousel Section -->
   <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
@@ -139,7 +140,7 @@
 </body>
 
 <!-- Main Content -->
-<main class="container-flex pt-5">
+<main class="container-flex pt-5 pt-5">
   <!-- Local Video Embed -->
   <div class="container">
     <div class="video-container ratio ratio-16x9">
