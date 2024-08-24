@@ -1,7 +1,7 @@
 about.html
 mobi.html
 weather.html
-
+.venv/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -12,7 +12,6 @@ __pycache__/
 *.so
 
 # Distribution / packaging
-.venv/
 .Python
 build/
 develop-eggs/
