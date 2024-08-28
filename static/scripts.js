@@ -266,43 +266,91 @@ new L.GPX(gpxFileUrl, {
   }
 }).addTo(map1);
 
+// Helper function to safely escape HTML
+function escapeHTML(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
 function editComment(commentId) {
   const listItem = document.querySelector(`[data-id="${commentId}"]`);
-  const commentText = listItem.querySelector('strong').nextSibling.textContent.trim();
+  if (!listItem) {
+      console.error(`List item with data-id="${commentId}" not found.`);
+      return;
+  }
+
+  const strongElement = listItem.querySelector('strong');
+  if (!strongElement) {
+      console.error('Strong element not found.');
+      return;
+  }
+
+  const commentTextNode = strongElement.nextSibling;
+  if (!commentTextNode) {
+      console.error('Comment text node not found.');
+      return;
+  }
+
+  const commentText = commentTextNode.textContent.trim();
 
   // Replace the comment text with an input field
-  const commentDiv = listItem.querySelector('strong').parentNode;
-  commentDiv.innerHTML = `<strong>${listItem.querySelector('strong').textContent}</strong> <input type="text" class="form-control" value="${commentText}">`;
+  const commentDiv = strongElement.parentNode;
+  commentDiv.innerHTML = ''; // Clear existing content
+
+  const strong = document.createElement('strong');
+  strong.textContent = strongElement.textContent;
+  commentDiv.appendChild(strong);
+
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.className = 'form-control';
+  input.value = commentText;
+  commentDiv.appendChild(input);
 
   // Change the Edit button to a Save button
   const editButton = listItem.querySelector('.btn-primary');
-  editButton.textContent = 'Save';
-  editButton.classList.remove('btn-primary');
-  editButton.classList.add('btn-success');
-  editButton.setAttribute('onclick', `saveComment(${commentId})`);
+  if (editButton) {
+      editButton.textContent = 'Save';
+      editButton.classList.remove('btn-primary');
+      editButton.classList.add('btn-success');
+      
+      // Remove existing event listeners by cloning
+      const newButton = editButton.cloneNode(true);
+      editButton.parentNode.replaceChild(newButton, editButton);
+      
+      // Add new event listener
+      newButton.addEventListener('click', () => saveComment(commentId));
+  }
 }
 
 function saveComment(commentId) {
   const listItem = document.querySelector(`[data-id="${commentId}"]`);
-  const updatedComment = listItem.querySelector('input').value.trim();
+  if (!listItem) {
+      console.error(`List item with data-id="${commentId}" not found.`);
+      return;
+  }
+
+  const input = listItem.querySelector('input');
+  if (!input) {
+      console.error('Input element not found.');
+      return;
+  }
+
+  const updatedComment = input.value.trim();
 
   if (!updatedComment) {
       alert('Comment cannot be empty.');
       return;
   }
 
-  // Replace the input field with the updated comment text
-  const commentDiv = listItem.querySelector('strong').parentNode;
-  commentDiv.innerHTML = `<strong>${listItem.querySelector('strong').textContent}</strong> ${updatedComment}`;
-
-  // Change the Save button back to an Edit button
+  // Disable the Save button to prevent multiple submissions
   const saveButton = listItem.querySelector('.btn-success');
-  saveButton.textContent = 'Edit';
-  saveButton.classList.remove('btn-success');
-  saveButton.classList.add('btn-primary');
-  saveButton.setAttribute('onclick', `editComment(${commentId})`);
+  if (saveButton) {
+      saveButton.disabled = true;
+  }
 
-  // Send updated comment to the server
+  // Send updated comment to the server first
   fetch('/update-comment', {
       method: 'POST',
       headers: {
@@ -315,6 +363,24 @@ function saveComment(commentId) {
   }).then(response => response.json())
       .then(data => {
           if (data.success) {
+              // Replace the input field with the updated comment text
+              const commentDiv = listItem.querySelector('strong').parentNode;
+              commentDiv.innerHTML = `<strong>${escapeHTML(listItem.querySelector('strong').textContent)}</strong> ${escapeHTML(updatedComment)}`;
+
+              // Change the Save button back to an Edit button
+              if (saveButton) {
+                  saveButton.textContent = 'Edit';
+                  saveButton.classList.remove('btn-success');
+                  saveButton.classList.add('btn-primary');
+
+                  // Remove existing event listeners by cloning
+                  const newButton = saveButton.cloneNode(true);
+                  saveButton.parentNode.replaceChild(newButton, saveButton);
+
+                  // Add new event listener
+                  newButton.addEventListener('click', () => editComment(commentId));
+              }
+
               console.log('Comment updated successfully.');
           } else {
               console.error('Failed to update comment:', data.message);
@@ -323,11 +389,26 @@ function saveComment(commentId) {
       }).catch(error => {
           console.error('Error:', error);
           alert('An error occurred while updating the comment.');
+      }).finally(() => {
+          if (saveButton) {
+              saveButton.disabled = false;
+          }
       });
 }
 
 function deleteComment(commentId) {
   if (confirm('Are you sure you want to delete this comment?')) {
+      const listItem = document.querySelector(`[data-id="${commentId}"]`);
+      if (!listItem) {
+          console.error(`List item with data-id="${commentId}" not found.`);
+          return;
+      }
+
+      const deleteButton = listItem.querySelector('.btn-danger');
+      if (deleteButton) {
+          deleteButton.disabled = true;
+      }
+
       fetch('/delete-comment', {
           method: 'POST',
           headers: {
@@ -340,7 +421,6 @@ function deleteComment(commentId) {
           .then(data => {
               if (data.success) {
                   // Remove the comment from the UI
-                  const listItem = document.querySelector(`[data-id="${commentId}"]`);
                   listItem.remove();
                   console.log('Comment deleted successfully.');
               } else {
@@ -350,6 +430,10 @@ function deleteComment(commentId) {
           }).catch(error => {
               console.error('Error:', error);
               alert('An error occurred while deleting the comment.');
+          }).finally(() => {
+              if (deleteButton && !data.success) {
+                  deleteButton.disabled = false;
+              }
           });
   }
 }
