@@ -265,3 +265,91 @@ new L.GPX(gpxFileUrl, {
     map1.fitBounds(e.target.getBounds());
   }
 }).addTo(map1);
+
+function editComment(commentId) {
+  const listItem = document.querySelector(`[data-id="${commentId}"]`);
+  const commentText = listItem.querySelector('strong').nextSibling.textContent.trim();
+
+  // Replace the comment text with an input field
+  const commentDiv = listItem.querySelector('strong').parentNode;
+  commentDiv.innerHTML = `<strong>${listItem.querySelector('strong').textContent}</strong> <input type="text" class="form-control" value="${commentText}">`;
+
+  // Change the Edit button to a Save button
+  const editButton = listItem.querySelector('.btn-primary');
+  editButton.textContent = 'Save';
+  editButton.classList.remove('btn-primary');
+  editButton.classList.add('btn-success');
+  editButton.setAttribute('onclick', `saveComment(${commentId})`);
+}
+
+function saveComment(commentId) {
+  const listItem = document.querySelector(`[data-id="${commentId}"]`);
+  const updatedComment = listItem.querySelector('input').value.trim();
+
+  if (!updatedComment) {
+      alert('Comment cannot be empty.');
+      return;
+  }
+
+  // Replace the input field with the updated comment text
+  const commentDiv = listItem.querySelector('strong').parentNode;
+  commentDiv.innerHTML = `<strong>${listItem.querySelector('strong').textContent}</strong> ${updatedComment}`;
+
+  // Change the Save button back to an Edit button
+  const saveButton = listItem.querySelector('.btn-success');
+  saveButton.textContent = 'Edit';
+  saveButton.classList.remove('btn-success');
+  saveButton.classList.add('btn-primary');
+  saveButton.setAttribute('onclick', `editComment(${commentId})`);
+
+  // Send updated comment to the server
+  fetch('/update-comment', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          id: commentId,
+          comment: updatedComment
+      })
+  }).then(response => response.json())
+      .then(data => {
+          if (data.success) {
+              console.log('Comment updated successfully.');
+          } else {
+              console.error('Failed to update comment:', data.message);
+              alert('Failed to update comment.');
+          }
+      }).catch(error => {
+          console.error('Error:', error);
+          alert('An error occurred while updating the comment.');
+      });
+}
+
+function deleteComment(commentId) {
+  if (confirm('Are you sure you want to delete this comment?')) {
+      fetch('/delete-comment', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              id: commentId
+          })
+      }).then(response => response.json())
+          .then(data => {
+              if (data.success) {
+                  // Remove the comment from the UI
+                  const listItem = document.querySelector(`[data-id="${commentId}"]`);
+                  listItem.remove();
+                  console.log('Comment deleted successfully.');
+              } else {
+                  console.error('Failed to delete comment:', data.message);
+                  alert('Failed to delete comment.');
+              }
+          }).catch(error => {
+              console.error('Error:', error);
+              alert('An error occurred while deleting the comment.');
+          });
+  }
+}
