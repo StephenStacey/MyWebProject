@@ -39,12 +39,13 @@ def index():
     try:
         with sqlite3.connect('comments.db') as conn:
             cursor = conn.cursor()
-            cursor.execute("SELECT name, comment FROM comments")
+            cursor.execute("SELECT id, name, comment FROM comments")  # Ensure 'id' is included here
             comments = cursor.fetchall()
     except sqlite3.Error as e:
         print(f"Database error: {e}")
 
     return render_template('index.html', comments=comments)
+
 
 
 @app.route('/update-comment', methods=['POST'])

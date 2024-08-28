@@ -286,13 +286,13 @@ function editComment(commentId) {
       return;
   }
 
-  const commentTextNode = strongElement.nextSibling;
-  if (!commentTextNode) {
-      console.error('Comment text node not found.');
+  // Ensure we're capturing the correct text node
+  const commentText = strongElement.nextSibling ? strongElement.nextSibling.nodeValue.trim() : '';
+
+  if (!commentText) {
+      console.error('Comment text not found or empty.');
       return;
   }
-
-  const commentText = commentTextNode.textContent.trim();
 
   // Replace the comment text with an input field
   const commentDiv = strongElement.parentNode;
@@ -314,11 +314,11 @@ function editComment(commentId) {
       editButton.textContent = 'Save';
       editButton.classList.remove('btn-primary');
       editButton.classList.add('btn-success');
-      
+
       // Remove existing event listeners by cloning
       const newButton = editButton.cloneNode(true);
       editButton.parentNode.replaceChild(newButton, editButton);
-      
+
       // Add new event listener
       newButton.addEventListener('click', () => saveComment(commentId));
   }
@@ -350,7 +350,7 @@ function saveComment(commentId) {
       saveButton.disabled = true;
   }
 
-  // Send updated comment to the server first
+  // Send updated comment to the server
   fetch('/update-comment', {
       method: 'POST',
       headers: {
@@ -373,12 +373,10 @@ function saveComment(commentId) {
                   saveButton.classList.remove('btn-success');
                   saveButton.classList.add('btn-primary');
 
-                  // Remove existing event listeners by cloning
-                  const newButton = saveButton.cloneNode(true);
-                  saveButton.parentNode.replaceChild(newButton, saveButton);
-
-                  // Add new event listener
-                  newButton.addEventListener('click', () => editComment(commentId));
+                  // Re-attach the edit event listener directly
+                  saveButton.onclick = function() {
+                      editComment(commentId);
+                  };
               }
 
               console.log('Comment updated successfully.');
@@ -395,6 +393,7 @@ function saveComment(commentId) {
           }
       });
 }
+
 
 function deleteComment(commentId) {
   if (confirm('Are you sure you want to delete this comment?')) {
