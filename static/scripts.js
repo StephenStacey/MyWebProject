@@ -273,6 +273,7 @@ function escapeHTML(str) {
   return div.innerHTML;
 }
 
+
 function editComment(commentId) {
   const listItem = document.querySelector(`[data-id="${commentId}"]`);
   if (!listItem) {
