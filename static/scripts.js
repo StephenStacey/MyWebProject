@@ -273,70 +273,9 @@ function escapeHTML(str) {
   return div.innerHTML;
 }
 
-function editComment(commentId) {
-  const listItem = document.querySelector(`[data-id="${commentId}"]`);
-  if (!listItem) {
-      console.error(`List item with data-id="${commentId}" not found.`);
-      return;
-  }
-
-  const strongElement = listItem.querySelector('strong');
-  if (!strongElement) {
-      console.error('Strong element not found.');
-      return;
-  }
-
-  // Ensure we're capturing the correct text node
-  const commentText = strongElement.nextSibling ? strongElement.nextSibling.nodeValue.trim() : '';
-
-  if (!commentText) {
-      console.error('Comment text not found or empty.');
-      return;
-  }
-
-  // Replace the comment text with an input field
-  const commentDiv = strongElement.parentNode;
-  commentDiv.innerHTML = ''; // Clear existing content
-
-  const strong = document.createElement('strong');
-  strong.textContent = strongElement.textContent;
-  commentDiv.appendChild(strong);
-
-  const input = document.createElement('input');
-  input.type = 'text';
-  input.className = 'form-control';
-  input.value = commentText;
-  commentDiv.appendChild(input);
-
-  // Change the Edit button to a Save button
-  const editButton = listItem.querySelector('.btn-primary');
-  if (editButton) {
-      editButton.textContent = 'Save';
-      editButton.classList.remove('btn-primary');
-      editButton.classList.add('btn-success');
-
-      // Remove existing event listeners by cloning
-      const newButton = editButton.cloneNode(true);
-      editButton.parentNode.replaceChild(newButton, editButton);
-
-      // Add new event listener
-      newButton.addEventListener('click', () => saveComment(commentId));
-  }
-}
-
 function saveComment(commentId) {
   const listItem = document.querySelector(`[data-id="${commentId}"]`);
-  if (!listItem) {
-      console.error(`List item with data-id="${commentId}" not found.`);
-      return;
-  }
-
   const input = listItem.querySelector('input');
-  if (!input) {
-      console.error('Input element not found.');
-      return;
-  }
-
   const updatedComment = input.value.trim();
 
   if (!updatedComment) {
@@ -344,13 +283,7 @@ function saveComment(commentId) {
       return;
   }
 
-  // Disable the Save button to prevent multiple submissions
-  const saveButton = listItem.querySelector('.btn-success');
-  if (saveButton) {
-      saveButton.disabled = true;
-  }
-
-  // Send updated comment to the server
+  // Send the updated comment to the server
   fetch('/update-comment', {
       method: 'POST',
       headers: {
@@ -363,20 +296,28 @@ function saveComment(commentId) {
   }).then(response => response.json())
       .then(data => {
           if (data.success) {
-              // Replace the input field with the updated comment text
-              const commentDiv = listItem.querySelector('strong').parentNode;
-              commentDiv.innerHTML = `<strong>${escapeHTML(listItem.querySelector('strong').textContent)}</strong> ${escapeHTML(updatedComment)}`;
+              const strongElement = listItem.querySelector('strong');
+
+              // Remove the input field
+              input.remove();
+
+              // Create a new text node with the updated comment and append it after the strong element
+              const updatedTextNode = document.createTextNode(` ${updatedComment}`);
+              strongElement.parentNode.appendChild(updatedTextNode);
 
               // Change the Save button back to an Edit button
+              const saveButton = listItem.querySelector('.btn-success');
               if (saveButton) {
                   saveButton.textContent = 'Edit';
                   saveButton.classList.remove('btn-success');
                   saveButton.classList.add('btn-primary');
+                  saveButton.onclick = () => editComment(commentId);
+              }
 
-                  // Re-attach the edit event listener directly
-                  saveButton.onclick = function() {
-                      editComment(commentId);
-                  };
+              // Remove the Cancel button
+              const cancelButton = listItem.querySelector('.btn-secondary');
+              if (cancelButton) {
+                  cancelButton.remove();
               }
 
               console.log('Comment updated successfully.');
@@ -384,14 +325,52 @@ function saveComment(commentId) {
               console.error('Failed to update comment:', data.message);
               alert('Failed to update comment.');
           }
-      }).catch(error => {
+      })
+      .catch(error => {
           console.error('Error:', error);
           alert('An error occurred while updating the comment.');
-      }).finally(() => {
-          if (saveButton) {
-              saveButton.disabled = false;
-          }
       });
+}
+
+
+function cancelEdit(commentId) {
+  const listItem = document.querySelector(`[data-id="${commentId}"]`);
+  if (!listItem) {
+      console.error(`List item with data-id="${commentId}"] not found.`);
+      return;
+  }
+
+  // Retrieve the original comment text from the data attribute
+  const originalComment = listItem.getAttribute('data-original-comment');
+  if (!originalComment) {
+      console.error('Original comment text not found.');
+      return;
+  }
+
+  const strongElement = listItem.querySelector('strong');
+  const input = listItem.querySelector('input');
+  if (input) {
+      input.remove();
+  }
+
+  // Restore the original text node
+  const originalTextNode = document.createTextNode(` ${originalComment}`);
+  strongElement.parentNode.appendChild(originalTextNode);
+
+  // Change the Save button back to an Edit button
+  const saveButton = listItem.querySelector('.btn-success');
+  if (saveButton) {
+      saveButton.textContent = 'Edit';
+      saveButton.classList.remove('btn-success');
+      saveButton.classList.add('btn-primary');
+      saveButton.onclick = () => editComment(commentId);
+  }
+
+  // Remove the Cancel button
+  const cancelButton = listItem.querySelector('.btn-secondary');
+  if (cancelButton) {
+      cancelButton.remove();
+  }
 }
 
 
