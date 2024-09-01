@@ -273,6 +273,63 @@ function escapeHTML(str) {
   return div.innerHTML;
 }
 
+function editComment(commentId) {
+  const listItem = document.querySelector(`[data-id="${commentId}"]`);
+  if (!listItem) {
+      console.error(`List item with data-id="${commentId}"] not found.`);
+      return;
+  }
+
+  const strongElement = listItem.querySelector('strong');
+  if (!strongElement) {
+      console.error('Strong element not found.');
+      return;
+  }
+
+  // Get the current comment text from the text node after the strong element
+  const commentText = strongElement.nextSibling ? strongElement.nextSibling.nodeValue.trim() : '';
+
+  if (!commentText) {
+      console.error('Comment text not found or empty.');
+      return;
+  }
+
+  // Save the original comment text in a data attribute
+  listItem.setAttribute('data-original-comment', commentText);
+
+  // Create the input field
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.className = 'form-control';
+  input.value = commentText;
+
+  // Replace the text node with the input field
+  const textNode = strongElement.nextSibling;
+  strongElement.parentNode.replaceChild(input, textNode);
+
+  // Change the Edit button to a Save button
+  const editButton = listItem.querySelector('.btn-primary');
+  if (editButton) {
+      editButton.textContent = 'Save';
+      editButton.classList.remove('btn-primary');
+      editButton.classList.add('btn-success');
+
+      // Replace event listener with save action
+      editButton.onclick = () => saveComment(commentId);
+
+      // Create the Cancel button
+      const cancelButton = document.createElement('button');
+      cancelButton.className = 'btn btn-sm btn-secondary'; 
+      cancelButton.textContent = 'Cancel';
+      cancelButton.style.marginRight = '8px';  // Add explicit right margin
+      cancelButton.onclick = () => cancelEdit(commentId);
+
+      // Insert the Cancel button before the Save button
+      editButton.parentNode.insertBefore(cancelButton, editButton);
+  }
+}
+
+
 function saveComment(commentId) {
   const listItem = document.querySelector(`[data-id="${commentId}"]`);
   const input = listItem.querySelector('input');
